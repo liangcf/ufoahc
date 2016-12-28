@@ -8,22 +8,27 @@
 
 namespace core\rds\tool;
 
-
 class Factory
 {
+    private static $objects;
+
     /**
-     * 返回到实例
+     * 返回Dao实例
      * @param $className
-     * @return bool
+     * @return \app\src\toge\dao\
+     * @throws \Exception
      */
     public static function getDaoModel($className)
     {
         $class='app\\src\\toge\\dao\\'.ucwords($className);
-        $model=Register::get($class);
-        if (!$model) {
-            $model=new $class;
-            Register::set($class, $model);
+        if(isset(self::$objects[$class])){
+            return self::$objects[$class];
         }
-        return $model;
+        try{
+            self::$objects[$class]=new $class();
+        }catch (\Exception $e){
+            throw new \Exception($class.'-- is not found:Factory',500);
+        }
+        return self::$objects[$class];
     }
 }

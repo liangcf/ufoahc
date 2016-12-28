@@ -1,15 +1,13 @@
 <?php
 namespace app\src\indep\web\service;
 
-use app\src\toge\dao\StuDao;
-use app\src\toge\dao\UsersDao;
 use core\rds\tool\Factory;
 
 class UsersService
 {
     //根据id方式
     public function getById($id){
-        /** @var $userDao \app\src\toge\dao\UsersDao*/
+        /** @var $userDao \app\src\toge\dao\UsersDao*/   //这句是为了增加提示代码功能
         $userDao=Factory::getDaoModel('UsersDao');
         return $userDao->selectId($id);
     }
@@ -52,6 +50,7 @@ class UsersService
         return $userDao->sum('sort_order');
     }
 
+    /*第二库的链接*/
     public function tGetAll(){
         /** @var $stuDao \app\src\toge\dao\StuDao*/
         $stuDao=Factory::getDaoModel('StuDao');

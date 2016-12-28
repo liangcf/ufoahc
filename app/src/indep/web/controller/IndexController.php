@@ -44,7 +44,6 @@ class IndexController extends Controller
 //        $ret3=$usersService->like();
         $usersService->count();
         $ret3=array();//die;
-
         /*邮件发送测试*/
         //$t=EmailUtils::sendEmail('ownziji@163.com','这里是密码','2271176865@qq.com','这是测试的邮件系统的','这是测试的内容，系统级别的');
         //p($t);

@@ -16,14 +16,15 @@ class Application
      * @throws \Exception
      */
     public function run(){
-        $runTime=$_SERVER['REQUEST_TIME'];
         $this->runConfig=GetConfigs::getRunConfigs();
         $this->initHeader();
         $mode=isset($this->runConfig['mode'])?$this->runConfig['mode']:'pro';
         if($mode!=='dev'){
             $this->handleException();
+        }else{
+            $runTime=$_SERVER['REQUEST_TIME'];
         }
-        $cache=isset($this->runConfig['cache_flag'])?$this->runConfig['cache_flag']:'';
+        $cache=isset($this->runConfig['cache_flag'])?$this->runConfig['cache_flag']:false;
         $action=$this->route();
         if($cache===true){
             $this->cacheAction($action);
