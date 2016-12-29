@@ -11,7 +11,7 @@
  * @link //link http://www.php.net/manual/en/mysqli-result.fetch-array.php
  */
 namespace core\rds\db;
-abstract class QMysqli
+abstract class QMysqli implements MysqliInterface
 {
     /**
      * @var QMysqliInstance

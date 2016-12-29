@@ -12,7 +12,7 @@
 namespace core\rds\db;
 
 
-abstract class Mysqli
+abstract class Mysqli implements MysqliInterface
 {
     /**
      * @var MysqliInstance;

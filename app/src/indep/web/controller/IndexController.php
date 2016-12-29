@@ -1,7 +1,7 @@
 <?php
 namespace app\src\indep\web\controller;
 
-use app\src\indep\web\service\UsersService;
+use app\src\indep\web\service\IndexService;
 use core\rds\control\Controller;
 use core\rds\util\EmailUtils;
 use core\rds\util\LogUtils;
@@ -27,12 +27,15 @@ class IndexController extends Controller
         $res1=$this->getConfigValue('my_array');
 //        p($res1);
         /*实例化service*/
-        $usersService=new UsersService();
+        $indexService=new IndexService();
         /*根据id查询数据*/
-        $res2=$usersService->getById('a0acd183542b0d2ab2d52291171aef0b');
+        $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
 //        p($res2);
-        /*查询--第二个数据库的所有数据*/
-//        $res3=$usersService->tGetAll();
+        /*查看phone表所有数据*/
+        $phone=$indexService->getPhoneAll();
+        p($phone);
+        /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
+//        $res3=$indexService->tGetAll();
 //        p($res3);
         /*
          * TODO :: 更多查询 Mysqli.php
@@ -41,17 +44,17 @@ class IndexController extends Controller
         /*测试日志工具*/
 //        LogUtils::log('liangchaofu','这是测试的内容','错误的内容');
         /*模糊查询方法*/
-//        $ret3=$usersService->like();
-        $usersService->count();
+//        $ret3=$indexService->like();
+        $indexService->count();
         $ret3=array();//die;
         /*邮件发送测试*/
         //$t=EmailUtils::sendEmail('ownziji@163.com','这里是密码','2271176865@qq.com','这是测试的邮件系统的','这是测试的内容，系统级别的');
         //p($t);
-//        p($usersService->count());
-//        p($usersService->min());
-//        p($usersService->max());
-//        p($usersService->avg());
-//        p($usersService->sum());
+//        p($indexService->count());
+//        p($indexService->min());
+//        p($indexService->max());
+//        p($indexService->avg());
+//        p($indexService->sum());
 
         $dbRunTime='访问数据库的时间：'.(microtime(true) - $tTime);
 
@@ -71,8 +74,8 @@ class IndexController extends Controller
         if(!$this->isPost()){
             return $this->msg(-1,'不是post请求')->response();
         }
-        $usersService=new UsersService();
-        $res2=$usersService->getById('a0acd183542b0d2ab2d52291171aef0b');
+        $indexService=new UsersService();
+        $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
         return $this->msg(0,$res2)->response();
     }
 }
