@@ -16,8 +16,8 @@ class CookieUtils
      * @param $cookieKey
      * @return bool
      */
-    public function clearCookie($cookieKey) {
-        $res=$this->saveCookie($cookieKey,array());
+    public static function clearCookie($cookieKey) {
+        $res=self::saveCookie($cookieKey,array());
         if($res){
             return true;
         }
@@ -29,7 +29,7 @@ class CookieUtils
      * @param $cookieKey
      * @return bool|mixed|string
      */
-    public function getCookie($cookieKey) {
+    public static function getCookie($cookieKey) {
         $cookieInfo=isset($_COOKIE[$cookieKey])?$_COOKIE[$cookieKey]:'';
         if(!$cookieInfo){
             return false;
@@ -49,7 +49,7 @@ class CookieUtils
      * @param string $dir
      * @return bool
      */
-    public function saveCookie($cookieKey,$cookieArr,$expires=3600*24*7,$dir='/') {
+    public static function saveCookie($cookieKey,$cookieArr,$expires=3600*24*7,$dir='/') {
         $tmpSerialize = json_encode($cookieArr);
         $res=setcookie($cookieKey,$tmpSerialize,time()+$expires,$dir);
         if($res){

@@ -8,19 +8,21 @@ namespace core\rds\util;
  *
  */
 class HttpUtils {
-	
-	/**
-	 * 发起GET请求
-	 *
-	 * @param string $url
-	 * @return string content
-	 */
-	public static function http_get($url) {
+
+    /**
+     * 发起GET请求
+     * @param $url
+     * @param int $timeOut
+     * @return array
+     */
+	public static function http_get($url,$timeOut=5) {
 		$oCurl = curl_init ();
 		if (stripos ( $url, "http://" ) !== FALSE || stripos ( $url, "https://" ) !== FALSE) {
 			curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYPEER, FALSE );
 			curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYHOST, FALSE );
 		}
+        //设置超时
+        curl_setopt($oCurl, CURLOPT_TIMEOUT, $timeOut);
 		curl_setopt ( $oCurl, CURLOPT_URL, $url );
 		curl_setopt ( $oCurl, CURLOPT_RETURNTRANSFER, 1 );
 		$sContent = curl_exec ( $oCurl );
@@ -40,15 +42,15 @@ class HttpUtils {
 			);
 		}
 	}
-	
-	/**
-	 * 发起POST请求
-	 *
-	 * @param string $url
-	 * @param array $param
-	 * @return string content
-	 */
-	public static function http_post($url, $param) {
+
+    /**
+     * 发起POST请求
+     * @param $url
+     * @param $param
+     * @param int $timeOut
+     * @return array
+     */
+	public static function http_post($url, $param,$timeOut=5) {
 		$oCurl = curl_init ();
 		if (stripos ( $url, "http://" ) !== FALSE || stripos ( $url, "https://" ) !== FALSE) {
 			curl_setopt ( $oCurl, CURLOPT_SSL_VERIFYPEER, FALSE );
@@ -63,6 +65,8 @@ class HttpUtils {
 			}
 			$strPOST = join ( "&", $aPOST );
 		}
+        //设置超时
+        curl_setopt($oCurl, CURLOPT_TIMEOUT, $timeOut);
 		curl_setopt ( $oCurl, CURLOPT_URL, $url );
 		curl_setopt ( $oCurl, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt ( $oCurl, CURLOPT_POST, true );

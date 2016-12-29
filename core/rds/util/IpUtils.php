@@ -11,7 +11,7 @@ namespace core\rds\util;
 class IpUtils
 {
     /**
-     * 用户用户ip
+     * 鑾峰彇鐢ㄦ埛ip
      * @return string
      */
     public static function getIp() {

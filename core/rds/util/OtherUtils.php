@@ -20,7 +20,7 @@ class OtherUtils
      * @param $key
      * @return string
      */
-    static public function encrypt($data, $key) {
+    public static function encrypt($data, $key) {
         $key = md5 ( $key );
         $x = 0;
         $len = strlen ( $data );
@@ -46,7 +46,7 @@ class OtherUtils
      * @param $key
      * @return string
      */
-    static public function decrypt($data, $key) {
+    public static function decrypt($data, $key) {
         $key = md5 ( $key );
         $x = 0;
         $data = base64_decode ( $data );

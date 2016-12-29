@@ -7,7 +7,7 @@ class Service
 {
     /**
      * @param $dao
-     * @return \core\rds\db\MysqliInterface object
+     * @return \core\rds\db\MysqliInterface
      */
     public function dbService($dao){
         return Factory::getDaoModel($dao);

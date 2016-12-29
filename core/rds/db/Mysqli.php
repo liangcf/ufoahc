@@ -94,19 +94,19 @@ abstract class Mysqli implements MysqliInterface
     }
 
     public function min($columnName,$where=array(),$orWhere=array()){
-        return $this->connect->min($this->_getTableName(),$where,$columnName,$orWhere);
+        return $this->connect->min($this->_getTableName(),$columnName,$where,$orWhere);
     }
 
     public function max($columnName,$where=array(),$orWhere=array()){
-        return $this->connect->max($this->_getTableName(),$where,$columnName,$orWhere);
+        return $this->connect->max($this->_getTableName(),$columnName,$where,$orWhere);
     }
 
     public function avg($columnName,$where=array(),$orWhere=array()){
-        return $this->connect->avg($this->_getTableName(),$where,$columnName,$orWhere);
+        return $this->connect->avg($this->_getTableName(),$columnName,$where,$orWhere);
     }
 
     public function sum($columnName,$where=array(),$orWhere=array()){
-        return $this->connect->sum($this->_getTableName(),$where,$columnName,$orWhere);
+        return $this->connect->sum($this->_getTableName(),$columnName,$where,$orWhere);
     }
 
     public function beginTransaction(){
