@@ -1,7 +1,6 @@
 .test2{
-    background: #ccc;
+    border: 2px solid #ff0000;
 }
 .font-da2{
-    font-size: 20px;
-    color: #FF0000;
+    font-size: 18px;
 }

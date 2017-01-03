@@ -11,7 +11,7 @@ class MainOperation{
 	
     private static $objects = array();
 
-    public static function factoryMethod($className,$method){
+    public static function mainMethod($className,$method){
         try {
             if(!isset(self::$objects[$className])){
                 self::$objects[$className]=new $className();

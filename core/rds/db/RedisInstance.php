@@ -34,6 +34,8 @@ class RedisInstance
         }
     }
 
+    private function __clone(){}
+
     /**
      * @param $config
      * @return RedisInstance|null

@@ -8,7 +8,6 @@ use core\rds\util\EmailUtils;
 use core\rds\util\LogUtils;
 use core\rds\util\QRCodeUtils;
 use core\rds\util\RedisUtils;
-use core\rds\util\UuidUtils;
 
 class IndexController extends Controller
 {
@@ -21,11 +20,10 @@ class IndexController extends Controller
             /*设置layout指向layout.mobile*/
 //            $this->_setLayOut('layout.mobile');
             /*测试二维码生成工具*/
-            /*$patch=$_SERVER['DOCUMENT_ROOT'];
-            $res=QRCodeUtils::createQRCode(UuidUtils::uuid(),'test 二维码',$patch.'/test',false,$patch.'/img/logo_1.png');
-            $res=stristr($res,'/test/');
-            p($res);
-            echo '<img src="'.$res.'">';*/
+            $patch=$_SERVER['DOCUMENT_ROOT'];
+            $res=QRCodeUtils::createQRCode($this->id(),'test 二维码',$patch.'/qrCode',false,$patch.'/img/logo_1.png');
+            $qrCode=stristr($res,'/qrCode/');
+//            $qrCode=null;
             /*获取配置文件方法*/
             $res1=$this->getConfigValue('my_array');
 //            p($res1);
@@ -37,26 +35,21 @@ class IndexController extends Controller
 //            p($res2);
             /*查看phone表所有数据*/
             $phone=$indexService->getPhoneAll();
-            p($phone);
             /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
-//            $res3=$indexService->tGetAll();
+            $res3=$indexService->tGetAll();
 //            p($res3);
             /*
              * TODO :: 更多查询 MysqliInstance.php
              */
 
             /*测试日志工具*/
-//            LogUtils::log('liangchaofu','这是测试的内容','错误的内容');
+            LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
             /*模糊查询方法*/
-//            $ret3=$indexService->like();
-            $indexService->count();
-            $ret3=array();
+            $ret3=$indexService->like();
             /*邮件发送测试*/
             //$t=EmailUtils::sendEmail('ownziji@163.com','这里是密码','2271176865@qq.com','这是测试的邮件系统的','这是测试的内容，系统级别的');
             //p($t);
-            p($indexService->count());
 
-            p($indexService->min());
             /*测试redis的*/
 //            $indexService->redis();
 //            $indexService->redis2();
@@ -64,6 +57,8 @@ class IndexController extends Controller
 //            $redis=RedisUtils::getRedis($redisConfig);//此方法需要自己关闭redis
 //            p($redis->get('ufoahc_test'));
 //            RedisUtils::closeRedis();
+            $indexService->count();
+            $indexService->min();
             $indexService->max();
             $indexService->avg();
             $indexService->sum();
@@ -76,7 +71,7 @@ class IndexController extends Controller
 //            $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime));
 //            return $this->response();
             /*第二种*/
-            return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime))->response();
+            return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime,'phone'=>$phone,'qr_code'=>$qrCode))->response();
         }catch (\Exception $e){
             echo $e->getMessage();
             die;
