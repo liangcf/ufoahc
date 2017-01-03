@@ -15,13 +15,10 @@ class RedisUtils {
      */
     private function __construct($config){
         try{
-            if(self::$redis==null){
-                self::$redis = new \Redis();
-            }
+            self::$redis = new \Redis();
             $dbIndex=isset($redis_info['db_index'])?$redis_info['db_index']:0;
             self::$redisConnect=self::$redis->connect($config['host'],$config['port']);
             self::$redis->select($dbIndex); //数据库选择
-            return self::$redis;
         }catch (\Exception $e){
             throw new \Exception('create redis connection Fail:'.$e->getMessage());
         }
