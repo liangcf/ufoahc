@@ -7,7 +7,7 @@ return array(
 	'default_db'=>array(
 		'db_host'=>'localhost',
 		'db_user'=>'root',
-		'db_pwd'=>'Abcd4321',
+		'db_pwd'=>'Abcd4321@',
 		'db_name'=>'ufoahc_db',
 		'port'=>'3306',
 		'db_char_set'=>'utf8'
@@ -16,11 +16,17 @@ return array(
 	'db_2'=>array(
 		'db_host'=>'localhost',
 		'db_user'=>'root',
-		'db_pwd'=>'Abcd4321',
+		'db_pwd'=>'Abcd4321@',
 		'db_name'=>'ufoahc_db_test',
 		'port'=>'3306',
 		'db_char_set'=>'utf8'
 	),
+    /*配置redis*/
+    'redis'=>array(
+        'host'=>'127.0.0.1',
+        'port'=>6379,
+        'index_db'=>0
+    ),
 	/*配置开发环境*/
 	'mode'=>'dev',//pro
 	/*缓存开关*/

@@ -9,20 +9,20 @@ namespace core\run;
 
 class MainOperation{
 	
-    protected $operation = array();
+    private static $objects = array();
 
-    public function factoryMethod($className,$method){
+    public static function factoryMethod($className,$method){
         try {
-            if(!isset($this->operation[$className])){
-                $this->operation[$className]=new $className($this);
+            if(!isset(self::$objects[$className])){
+                self::$objects[$className]=new $className();
             }
-            $whole['before']=$this->operation[$className]->beforeRequest();
-            if(!method_exists($this->operation[$className],$method)){
+            $whole['before']=self::$objects[$className]->beforeRequest();
+            if(!method_exists(self::$objects[$className],$method)){
                 throw new \Exception($method.'-- is not found',500);
             }
-            $whole['data']=$this->operation[$className]->$method();
-            $whole['after']=$this->operation[$className]->afterRequest();
-            $whole['layout']=$this->operation[$className]->_getLayOut();
+            $whole['data']=self::$objects[$className]->$method();
+            $whole['after']=self::$objects[$className]->afterRequest();
+            $whole['layout']=self::$objects[$className]->_getLayOut();
             return $whole;
         } catch (\Exception $e) {
             throw new \Exception($className.'-- is not found',500);

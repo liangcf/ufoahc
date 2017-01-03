@@ -106,7 +106,7 @@ class Application
         if(!class_exists($_className)){
             throw new \Exception("Controller in not found",404);
         }
-        $data=(new MainOperation())->factoryMethod($_className,$_funName);
+        $data=MainOperation::factoryMethod($_className,$_funName);
         if(empty($data)){
             throw new \Exception("not return data",404);
         }

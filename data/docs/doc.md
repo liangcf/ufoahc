@@ -1,7 +1,7 @@
 ###这是文档
 1、在config文件夹配置db.config.php；配置好数据库后到shell目录下
 
-2、php命令方式执行db.test.php;如果中途没有失败，测试数据添加完毕
+2、php命令方式执行ufoahc_db.php;如果中途没有失败，测试数据添加完毕
 
 3、配置工作目录 工作目录为public目录
 

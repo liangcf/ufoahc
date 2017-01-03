@@ -25,6 +25,7 @@ class MysqliInstance
     private $_funErrorNo=6001;//外界函数异常代码
     private $_paraErrorNo=6002;//参数异常代码
     private static $instance=null;
+    private static $instanceArr=array();
 
     private static $dbName='';
 
