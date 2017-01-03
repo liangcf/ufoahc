@@ -1,7 +1,9 @@
 <?php
 namespace app\src\indep\web\service;
 
+use core\rds\db\Redis;
 use core\rds\service\Service;
+use core\run\GetConfigs;
 
 class IndexService extends Service
 {
@@ -46,5 +48,21 @@ class IndexService extends Service
     public function tGetAll(){
         $stuDao=parent::dbService('StuDao');
         return $stuDao->selectAll();
+    }
+    /*redis-test*/
+    public function redis(){
+        $redisConfig=GetConfigs::getRunConfigs()['redis'];
+        $redis=Redis::getRedis($redisConfig);
+        $redis->set('ufoahc_test','liangchaofu');
+        p($redis->get('ufoahc_test'));
+        $redis2=Redis::getRedis($redisConfig);
+        p($redis2->get('ufoahc_test'));
+    }
+    public function redis2(){
+        $redisConfig=GetConfigs::getRunConfigs()['redis'];
+        $redis=Redis::getRedis($redisConfig);
+        p($redis->get('ufoahc_test'));
+        $redis2=Redis::getRedis($redisConfig);
+        p($redis2->get('ufoahc_test'));
     }
 }

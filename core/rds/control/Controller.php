@@ -34,7 +34,7 @@ abstract class Controller
 	 * @param $configKey
 	 * @return null
 	 */
-	protected function getDbConfigValue($configKey){
+	protected function getRunConfigValue($configKey){
 		$config=GetConfigs::getRunConfigs();
 		if(isset($config[$configKey])){
 			return $config[$configKey];

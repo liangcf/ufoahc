@@ -6,43 +6,26 @@ class RedisUtils {
      * @var \Redis
      */
     private static $redis=null;
-    private static $redisConnect=null;
-
-    /**
-     * RedisUtils constructor.
-     * @param $config
-     * @throws \Exception
-     */
-    private function __construct($config){
-        try{
-            self::$redis = new \Redis();
-            $dbIndex=isset($redis_info['db_index'])?$redis_info['db_index']:0;
-            self::$redisConnect=self::$redis->connect($config['host'],$config['port']);
-            self::$redis->select($dbIndex); //数据库选择
-        }catch (\Exception $e){
-            throw new \Exception('create redis connection Fail:'.$e->getMessage());
-        }
-    }
+    private static $connect=null;
 
     /**
      * @param $config
      * @return \Redis
      */
     public static function getRedis($config){
-        if(self::$redis&&self::$redisConnect){
+        if(self::$redis&&self::$connect){
             return self::$redis;
         }
-        new self($config);
+        self::$redis=new \Redis();
+        self::$connect=self::$redis->connect($config['host'],$config['port']);
+        self::$redis->select(isset($redis_info['db_index'])?$redis_info['db_index']:'0');
         return self::$redis;
     }
-    /**
-     * 关闭redis
-     */
+    
     public static function closeRedis(){
         if(!empty(self::$redis)){
-            self::$redisConnect=null;
+            self::$connect=null;
             self::$redis->close();
         }
     }
-
 }

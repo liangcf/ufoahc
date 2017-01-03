@@ -16,14 +16,14 @@ class GetConfigs
      * 读取配置文件
      * @return mixed
      */
-    static public function getAppConfigs(){
+    public static function getAppConfigs(){
         if(isset(self::$appConfig['application.config'])&&self::$appConfig['application.config']===true){
-            return self::$dbConfig['application.data'];
+            return self::$appConfig['application.data'];
         }
         $data=require __DIR__.'/../../config/application.config.php';
-        self::$dbConfig['application.config']=true;
-        self::$dbConfig['application.data']=$data;
-        return self::$dbConfig['application.data'];
+        self::$appConfig['application.config']=true;
+        self::$appConfig['application.data']=$data;
+        return self::$appConfig['application.data'];
     }
 
     /**

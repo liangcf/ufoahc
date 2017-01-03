@@ -3,9 +3,11 @@ namespace app\src\indep\web\controller;
 
 use app\src\indep\web\service\IndexService;
 use core\rds\control\Controller;
+use core\rds\db\Redis;
 use core\rds\util\EmailUtils;
 use core\rds\util\LogUtils;
 use core\rds\util\QRCodeUtils;
+use core\rds\util\RedisUtils;
 use core\rds\util\UuidUtils;
 
 class IndexController extends Controller
@@ -55,8 +57,13 @@ class IndexController extends Controller
             p($indexService->count());
 
             p($indexService->min());
-
-
+            /*测试redis的*/
+//            $indexService->redis();
+//            $indexService->redis2();
+//            $redisConfig=$this->getRunConfigValue('redis');
+//            $redis=RedisUtils::getRedis($redisConfig);//此方法需要自己关闭redis
+//            p($redis->get('ufoahc_test'));
+//            RedisUtils::closeRedis();
             $indexService->max();
             $indexService->avg();
             $indexService->sum();
