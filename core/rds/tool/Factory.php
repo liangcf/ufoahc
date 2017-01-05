@@ -10,7 +10,7 @@ namespace core\rds\tool;
 
 class Factory
 {
-    private static $objects;
+    private static $daoObj=array();
 
     /**
      * 返回Dao实例
@@ -18,17 +18,16 @@ class Factory
      * @return \core\rds\db\MysqliInterface object
      * @throws \Exception
      */
-    public static function getDaoModel($className)
-    {
+    public static function getDaoObj($className){
         $class='app\\src\\toge\\dao\\'.ucwords($className);
-        if(isset(self::$objects[$class])){
-            return self::$objects[$class];
+        if(isset(self::$daoObj[$class])){
+            return self::$daoObj[$class];
         }
         try{
-            self::$objects[$class]=new $class();
+            self::$daoObj[$class]=new $class();
         }catch (\Exception $e){
-            throw new \Exception($class.'-- is not found:Factory',500);
+            throw new \Exception($class.'-- is not found:Factory->getDaoObj',500);
         }
-        return self::$objects[$class];
+        return self::$daoObj[$class];
     }
 }

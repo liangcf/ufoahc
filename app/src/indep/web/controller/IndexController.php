@@ -21,7 +21,7 @@ class IndexController extends Controller
 //            $this->_setLayOut('layout.mobile');
             /*测试二维码生成工具*/
             $patch=$_SERVER['DOCUMENT_ROOT'];
-            $res=QRCodeUtils::createQRCode($this->id(),'test 二维码',$patch.'/qrCode',false,$patch.'/img/logo_1.png');
+            $res=QRCodeUtils::createQRCode($this->uuid(),'test 二维码',$patch.'/qrCode',false,$patch.'/img/logo_1.png');
             $qrCode=stristr($res,'/qrCode/');
 //            $qrCode=null;
             /*获取配置文件方法*/
@@ -37,6 +37,7 @@ class IndexController extends Controller
             $phone=$indexService->getPhoneAll();
             /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
             $res3=$indexService->tGetAll();
+//            p(parent::uuid());
 //            p($res3);
             /*
              * TODO :: 更多查询 MysqliInstance.php

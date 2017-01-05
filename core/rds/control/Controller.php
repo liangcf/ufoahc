@@ -158,7 +158,7 @@ abstract class Controller
 	 * 获取id
 	 * @return string
 	 */
-	protected function id(){
+	protected function uuid(){
 		return strtolower(md5(uniqid(null . mt_rand(), true)));
 	}
 

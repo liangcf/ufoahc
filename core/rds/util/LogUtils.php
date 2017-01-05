@@ -12,7 +12,7 @@ class LogUtils
      * @param string $dir 日志路径
      * @return int
      */
-    public static function log($file,$message,$context,$dir=null){
+    public static function log($file,$message,$context=null,$dir=null){
         if(empty($dir)){
             $dir=__DIR__.'/../../../data/logs';
         }
@@ -21,8 +21,10 @@ class LogUtils
         if(!is_dir($dir)){
             mkdir($dir,0777,true);
         }
-        if(!is_string($context)){
-            $context=json_encode($context);
+        if($context){
+            if(!is_string($context)){
+                $context=json_encode($context);
+            }
         }
         $fileName=$dir.date('H').$file.'.log';
         $date=date('Y-m-d H:i:s');

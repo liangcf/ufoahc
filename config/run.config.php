@@ -5,7 +5,7 @@
 return array(
 	/*数据库配置信息*/
 	'default_db'=>array(
-		'db_host'=>'localhost',
+		'db_host'=>'127.0.0.1',
 		'db_user'=>'root',
 		'db_pwd'=>'Abcd4321@',
 		'db_name'=>'ufoahc_db',
@@ -14,7 +14,7 @@ return array(
 	),
 	/*配置第二个数据库*/
 	'db_2'=>array(
-		'db_host'=>'localhost',
+		'db_host'=>'127.0.0.1',
 		'db_user'=>'root',
 		'db_pwd'=>'Abcd4321@',
 		'db_name'=>'ufoahc_db_test',
