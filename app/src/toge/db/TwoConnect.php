@@ -11,7 +11,7 @@ namespace app\src\toge\db;
 use core\run\GetConfigs;
 use core\rds\db\Mysqli;
 
-abstract class DbConnect extends Mysqli
+abstract class TwoConnect extends Mysqli
 {
     /**
      * DbConnect constructor.
@@ -21,6 +21,6 @@ abstract class DbConnect extends Mysqli
     function __construct($tableName,$id='id'){
         $this->tableName=$tableName;
         $this->tableId=$id;
-        $this->initConnect(GetConfigs::getRunConfigs()['default_db']);
+        $this->initConnect(GetConfigs::getRunConfigs()['db_2']);
     }
 }

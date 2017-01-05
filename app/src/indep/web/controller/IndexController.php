@@ -35,9 +35,10 @@ class IndexController extends Controller
 //            p($res2);
             /*查看phone表所有数据*/
             $phone=$indexService->getPhoneAll();
+//            $phone=array();
             /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
-            $res3=$indexService->tGetAll();
-//            p(parent::uuid());
+//            $res3=$indexService->tGetAll();
+//            p(parent::uuid());die;
 //            p($res3);
             /*
              * TODO :: 更多查询 MysqliInstance.php

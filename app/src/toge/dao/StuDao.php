@@ -8,14 +8,11 @@
 
 namespace app\src\toge\dao;
 
-use app\src\toge\db\TestDb;
+use app\src\toge\db\TwoConnect;
 
-class StuDao extends TestDb
+class StuDao extends TwoConnect
 {
-    protected function _getTableName(){
-        return 'stu';
-    }
-    protected function _getDefaultId(){
-        return 'id';
+    function __construct(){
+        parent::__construct('stu','id');
     }
 }
