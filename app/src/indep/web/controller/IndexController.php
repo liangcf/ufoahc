@@ -20,10 +20,10 @@ class IndexController extends Controller
             /*设置layout指向layout.mobile*/
 //            $this->_setLayOut('layout.mobile');
             /*测试二维码生成工具*/
-            $patch=$_SERVER['DOCUMENT_ROOT'];
-            $res=QRCodeUtils::createQRCode($this->uuid(),'test 二维码',$patch.'/qrCode',false,$patch.'/img/logo_1.png');
-            $qrCode=stristr($res,'/qrCode/');
-//            $qrCode=null;
+//            $patch=$_SERVER['DOCUMENT_ROOT'];
+//            $res=QRCodeUtils::createQRCode($this->uuid(),'test 二维码',$patch.'/qrCode',false,$patch.'/img/logo_1.png');
+//            $qrCode=stristr($res,'/qrCode/');
+            $qrCode=null;
             /*获取配置文件方法*/
             $res1=$this->getConfigValue('my_array');
 //            p($res1);
@@ -37,7 +37,7 @@ class IndexController extends Controller
             $phone=$indexService->getPhoneAll();
 //            $phone=array();
             /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
-//            $res3=$indexService->tGetAll();
+            $res3=$indexService->tGetAll();
 //            p(parent::uuid());die;
 //            p($res3);
             /*
@@ -66,13 +66,6 @@ class IndexController extends Controller
             $indexService->sum();
             $dbRunTime='访问数据库的时间：'.(microtime(true) - $tTime);
 
-            /*
-             *TODO :: 返回的方式 两种
-             */
-            /*第一种*/
-//            $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime));
-//            return $this->response();
-            /*第二种*/
             return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime,'phone'=>$phone,'qr_code'=>$qrCode))->response();
         }catch (\Exception $e){
             echo $e->getMessage();
@@ -86,8 +79,12 @@ class IndexController extends Controller
         if(!$this->isPost()){
             return $this->msg(-1,'不是post请求')->response();
         }
-        $indexService=new IndexService();
-        $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
-        return $this->msg(0,$res2)->response();
+        try{
+            $indexService=new IndexService();
+            $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
+            return $this->msg(0,$res2)->response();
+        }catch (\Exception $e){
+            return $this->msg(-100,'异常'.$e->getMessage())->response();
+        }
     }
 }

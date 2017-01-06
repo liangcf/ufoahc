@@ -5,7 +5,8 @@
 
 3、配置工作目录 工作目录为public目录
 
-4、windows环境下双击start.bat（linux环境运行start.sh）,然后打开浏览器访问：`http://localhost:8000/`
+4、windows环境下双击`shell/webserver/start.bat`（linux环境运行`start.sh`）,然后打开浏览器访问：`http://localhost:8000/`
+注：运行需要php环境
 
 
     ├─app 应用
@@ -46,21 +47,19 @@
     ├─shell 后台命令执行的文件夹
     │   ├─lib 库
     │   ├─logs 日志
-    │   ├─db_connect.php 测试数据库是否链接成功 其他的无视
+    │   ├─db_connect.php 测试数据库是否链接成功 
     │   └─ufoahc_db.php 在上一级的config文件夹内的db.config.php 数据库配置文件配置完毕启动php命令执行就可以测试使用
     ├─var 附加
     │   ├─cache 静态化页面的缓存
     └   └─error-page 错误提示页面
 
 访问：
-    http://xxxx:80/模块名/控制器名/Action名
     http://xxxx:80/web/index/index
-    http://xxxx:80/mobile/index/index
-    http://xxxx:80/admin/index/index
 
     注：http://xxxx:port/web/index/index
+    
+    0):端口
     1):web为模块名
     2):index为模块下的控制名称
     3):index(第二个index)为控制器名称的Action方法名称（除去Action）
 
-nginx的配置工作目录为：public
