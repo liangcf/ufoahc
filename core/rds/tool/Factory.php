@@ -11,6 +11,7 @@ namespace core\rds\tool;
 class Factory
 {
     private static $daoObj=array();
+    private static $serviceObj=array();
 
     /**
      * 返回Dao实例
@@ -29,5 +30,23 @@ class Factory
             throw new \Exception($class.'-- is not found:Factory->getDaoObj',500);
         }
         return self::$daoObj[$class];
+    }
+
+    /**
+     * @param $className
+     * @return  object
+     * @throws \Exception
+     */
+    public static function getServiceObj($className){
+        $class='app\\src\\indep\\'.ltrim($className,'\\');
+        if(isset(self::$serviceObj[$class])){
+            return self::$serviceObj[$class];
+        }
+        try{
+            self::$serviceObj[$class]=new $class();
+        }catch (\Exception $e){
+            throw new \Exception($class.'-- is not found:Factory->getServiceObj',500);
+        }
+        return self::$serviceObj[$class];
     }
 }

@@ -7,6 +7,7 @@
 
 namespace core\rds\control;
 
+use core\rds\tool\Factory;
 use core\run\GetConfigs;
 
 abstract class Controller
@@ -189,4 +190,8 @@ abstract class Controller
 	public function _getLayOut(){
 		return $this->_layOut;
 	}
+
+	public function getService($className){
+	    return Factory::getServiceObj($className);
+    }
 }

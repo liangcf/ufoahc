@@ -15,7 +15,52 @@
 <div>
     <?php include $_content; ?>
 </div>
-<hr>
-<h1>这里是底部</h1>
+<style>
+    /*这是底部*/
+    .foot{width:100%;height:190px;background:#272F35;position:relative}
+    .foot .i-foot-one{margin:0 auto;width:1200px;overflow:hidden;position:relative;background:#272F35;height: 190px;}
+    .foot .i-foot-one .foot-content-one,.foot .i-foot-one .foot-content-three,.foot .i-foot-one .foot-content-two{height:186px;float:left;margin-top:2px;margin-left:130px;padding:2px}
+    .foot .i-foot-one .foot-content-one img{width:120px}
+    .foot .i-foot-one .foot-content-one p,.foot .i-foot-one .foot-content-three p,.foot .i-foot-one .foot-content-two p{color:#fff;text-align:center;font-size:22px;line-height:40px;padding-bottom:3px}
+    .foot .i-foot-one .foot-content-three ul li,.foot .i-foot-one .foot-content-two ul li{color:#74797e;font-size:14px;line-height:26px;/*text-align:center*/}
+    .foot .i-foot-one .foot-content-three ul li a,.foot .i-foot-one .foot-content-two ul li a{color:#74797e;font-size:14px;line-height:26px;text-align:center}
+    .foot .i-foot-one .foot-content-three ul li a:hover,.foot .i-foot-one .foot-content-two ul li a:hover{color:#66CBF3}
+    .toolbar{position:fixed;right:10px;bottom:50px;width:32px;height:32px;background:url('/ico/common/top.png') no-repeat;}
+</style>
+<a href="javascript:scroll(0,0)" class="toolbar-item"><div class="toolbar"></div></a>
+<div class="foot">
+    <div class="i-foot-one">
+        <div class="foot-content-one">
+            <p>个人微信</p>
+            <img src="/img/wx_100.jpg">
+        </div>
+        <div class="foot-content-one">
+            <p>个人QQ</p>
+            <img src="/img/qq_100.jpg">
+        </div>
+        <div class="foot-content-two">
+            <p style="text-align: left">联系方式</p>
+            <ul>
+                <li>地址：贵州省贵阳市云岩区73路终点站</li>
+                <li>电话：18285158792</li>
+                <li>邮箱1：jionxs@163.com</li>
+                <li>邮箱2：lcfuzj@163.com</li>
+            </ul>
+        </div>
+        <div class="foot-content-three">
+            <p style="text-align: left">特别链接</p>
+            <ul>
+<!--                <li><a href="/web/index/about" target="_blank">关于与建议</a></li>-->
+                <li><a href="http://blog.coogn.com/" target="_blank">至久博客</a></li>
+                <li><a href="http://www.jionx.com/" target="_blank">简讯站</a></li>
+                <li><a href="http://www.coogn.com/" target="_blank">安全特产</a></li>
+                <li><a href="http://blog.coogn.com/home/index.html" target="_blank">关于开发者</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div style="background: #0D0D0D;height: 30px;">
+    <p style="margin: 0 auto;text-align: center;line-height: 30px;color: #FFFFFF;background: #0D0D0D;width: 1200px;" >&copy; 2015 - <?php echo date('Y'); ?></p>
+</div>
 </body>
 </html>

@@ -28,7 +28,9 @@ class IndexController extends Controller
             $res1=$this->getConfigValue('my_array');
 //            p($res1);
             /*实例化service*/
-            $indexService=new IndexService();
+//            $indexService=new IndexService();
+            /**@var $indexService \app\src\indep\web\service\IndexService*/
+            $indexService=parent::getService('web\service\IndexService');
             /*根据id查询数据*/
             $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
             $indexService->max();
