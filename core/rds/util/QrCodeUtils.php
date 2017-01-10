@@ -1,10 +1,8 @@
 <?php
 /**
- * 创建二维码工具
- * @author JYao
- *
+ * @author 梁朝富 lcf@jionx.com
+ * @function 二维码生成
  */
-
 namespace core\rds\util;
 
 include __DIR__.'/../../libs/phpqrcode.php';
@@ -23,7 +21,7 @@ class QRCodeUtils {
      * @param int $margin
      * @return string
      */
-    public static function createQRCode($qrCodeName,$content,$codePatch,$forceFlush=false,$logo='',$level='H',$size=7,$margin=1){
+    public static function createQRCode($qrCodeName,$content,$codePatch,$forceFlush=false,$logo='',$level='L',$size=7,$margin=1){
         //$patch=$_SERVER['DOCUMENT_ROOT'];
         //判断文件目录是否存在
 //        $codePatchTmp=$patch.$codePatch;

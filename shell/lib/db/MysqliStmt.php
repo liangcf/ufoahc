@@ -1,15 +1,9 @@
 <?php
-
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/6/14
- * Time: 22:48
- * @version 1.1.0
+ * @author 梁朝富 lcf@jionx.com
+ * @version 1.0.3
  * @function 参数化查询的类
- * 部分代码重复率有点高，还需优化
  */
-
 namespace shell\lib\db;
 class MysqliStmt
 {

@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/28
- * Time: 15:32
+ * @author 梁朝富 lcf@jionx.com
+ * @function dao和service工厂方法
  */
 
 namespace core\rds\tool;

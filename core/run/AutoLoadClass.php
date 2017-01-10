@@ -1,11 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/9/19
- * Time: 16:49
- * url: http://git.oschina.net/liangcf/ufoahc
- * url: https://github.com/liangcf/ufoahc
+ * @author 梁朝富 lcf@jionx.com
+ * @function 自动加载类
+ * @link http://git.oschina.net/liangcf/ufoahc
+ * @link https://github.com/liangcf/ufoahc
  */
 
 namespace core\run;

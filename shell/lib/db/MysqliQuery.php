@@ -1,10 +1,6 @@
 <?php
-
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/4/20
- * Time: 10:14
+ * @author 梁朝富 lcf@jionx.com
  * @version 1.0.1
  * @function 不参数化查询，拼装sql语句直接查询
  * @link //link http://www.php.net/manual/en/mysqli-result.fetch-array.php

@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/14
- * Time: 16:21
+ * @author 梁朝富 lcf@jionx.com
+ * @function 获取用户ip
  */
-
 namespace core\rds\util;
 
 class IpUtils

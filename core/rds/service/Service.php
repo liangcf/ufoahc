@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author 梁朝富 lcf@jionx.com
+ */
+
 namespace core\rds\service;
 
 use core\rds\tool\Factory;

@@ -70,28 +70,6 @@ echo $sts;
  *                  佛祖保佑             永无BUG
  */
 
-/**
- *      .............................................................................................................
- *
- *              llll                               ccccc                uuuu                    uuuu
- *              llll                           cccc       cccc          uuuu                    uuuu
- *              llll                        cccc                        uuuu                    uuuu
- *              llll                      cccc                          uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                     cccc                           uuuu                    uuuu
- *              llll                      cccc                          uuuu                    uuuu
- *              llll                        cccc                         uuuu                  uuuu
- *              llll                          cccc        cccc             uuuuuuuuuuuuuuuuuuuuuuu
- *              llllllllllllllllllll              cccccc                      uuuuuuuuuuuuuuu
- *              llllllllllllllllllll
- *
- *      .............................................................................................................
- */
 
 /**
      ◢████████████◣　　　　　　　
@@ -124,12 +102,7 @@ echo $sts;
  */
 
 /**
- * ┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻┻
- * ┫             梁朝富               ┣
- * ┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳┳
- */
-/**
- * ═━═━═━═━══━═━═━═━══━═━═
- *   枪毙BUG  ▄︻┻═┳一      oO~BUG
- * ═━═━═━═━══━═━═━═━══━═━═
+ * ═━═━═━═━═━═━═━═━═━═━═
+ * LCF   枪毙BUG  ▄︻┻═┳一     oO~BUG
+ * ═━═━═━═━═━═━═━═━═━═━═
  */

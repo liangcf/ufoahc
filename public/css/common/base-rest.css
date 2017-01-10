@@ -127,7 +127,9 @@ input,button,select,textarea {
     line-height: inherit;
     outline: none;
 }
-
+button{
+    cursor: pointer;
+}
 a{
     /*color: #337ab7;*/
     text-decoration: none;

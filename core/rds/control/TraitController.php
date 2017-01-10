@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/11/24
- * Time: 10:20
+ * @author 梁朝富 lcf@jionx.com
+ * @function 链式操作的trait
  */
-
 namespace core\rds\control;
 
 

@@ -1,14 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/11/15
- * Time: 20:22
- * 加密解密的工具
+ * @author 梁朝富 lcf@jionx.com
+ * @function 不安全的临时的加密揭秘
  */
-
 namespace core\rds\util;
-
 
 class OtherUtils
 {

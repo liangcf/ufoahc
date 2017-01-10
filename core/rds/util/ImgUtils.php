@@ -1,13 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/2
- * Time: 18:47
+ * @author 梁朝富 lcf@jionx.com
+ * @function base64_decode
  */
-
 namespace core\rds\util;
-
 
 class ImgUtils
 {

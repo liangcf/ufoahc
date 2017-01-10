@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @author 梁朝富 lcf@jionx.com
+ * @link http://git.oschina.net/liangcf/ufoahc
+ * @link https://github.com/liangcf/ufoahc
+ */
 //打印函数
 include 'var/function.php';
 

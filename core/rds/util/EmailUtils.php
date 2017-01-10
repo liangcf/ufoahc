@@ -1,10 +1,8 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/5
- * Time: 10:30
+ * @author 梁朝富 lcf@jionx.com
+ * @function 邮件操作工具
  */
 namespace core\rds\util;
 

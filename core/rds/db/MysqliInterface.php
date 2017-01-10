@@ -1,12 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/6/17
- * Time: 10:41
- * @version 1.1.1
- * @function 参数化查询的类
- * 部分代码重复率有点高，还需优化
+ * @author 梁朝富 lcf@jionx.com
  */
 
 namespace core\rds\db;

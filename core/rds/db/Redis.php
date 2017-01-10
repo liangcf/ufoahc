@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2017/1/3
- * Time: 16:24
+ * @author 梁朝富 lcf@jionx.com
  */
+
 
 namespace core\rds\db;
 

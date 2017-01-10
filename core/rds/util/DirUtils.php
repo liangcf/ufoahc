@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/26
- * Time: 21:54
+ * @author 梁朝富 lcf@jionx.com
+ * @function 文件夹操作工具
  */
-
 namespace core\rds\util;
 
 class DirUtils

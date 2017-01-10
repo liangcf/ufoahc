@@ -1,5 +1,5 @@
 /**
- * Created by AF on 2016/11/5.
+ * 常用的js方法
  */
 
 /* ajax 请求 */
@@ -17,7 +17,8 @@ function _ajax_post(url, data, cb) {
             }
         },
         error: function (e) {
-            p('ajax_post_error:'+ e);
+            p('_ajax_post_error');
+            p(e);
         }
     });
 }

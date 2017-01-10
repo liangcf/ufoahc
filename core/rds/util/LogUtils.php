@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @author 梁朝富 lcf@jionx.com
+ * @function 日志
+ */
 namespace core\rds\util;
 
 class LogUtils

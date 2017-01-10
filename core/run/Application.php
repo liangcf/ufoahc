@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/11/30
- * Time: 21:55
+ * @author 梁朝富 lcf@jionx.com
+ * @function 入口
  */
-
 namespace core\run;
 
 class Application

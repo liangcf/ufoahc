@@ -1,13 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/11/26
- * Time: 14:06
+ * @author 梁朝富 lcf@jionx.com
+ * @function 输出文件
  */
-
 namespace core\run;
-
 
 class View
 {

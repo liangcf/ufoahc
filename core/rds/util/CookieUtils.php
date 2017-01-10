@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/6
- * Time: 11:06
+ * @author 梁朝富 lcf@jionx.com
+ * @function cookie操作工具
  */
 
 namespace core\rds\util;

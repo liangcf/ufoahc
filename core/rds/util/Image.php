@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: F
- * Date: 2016/3/1
- * Time: 17:15
+ * @author 梁朝富 lcf@jionx.com
+ * @function 图片操作类
  */
 
 namespace core\rds\util;

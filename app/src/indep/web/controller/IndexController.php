@@ -21,7 +21,8 @@ class IndexController extends Controller
 //            $this->_setLayOut('layout.mobile');
             /*测试二维码生成工具*/
 //            $patch=$_SERVER['DOCUMENT_ROOT'];
-//            $res=QRCodeUtils::createQRCode($this->uuid(),'test 二维码',$patch.'/qrCode',false,$patch.'/img/logo_1.png');
+//            $res=QRCodeUtils::createQRCode($this->uuid(),'http://weixin.qq.com/r/fTvfx0vE-xaArQ_k925v',$patch.'/qrCode',false,$patch.'/img/jxz_logo.jpg');
+//            $res=QRCodeUtils::createQRCode($this->uuid(),'http://qm.qq.com/cgi-bin/qm/qr?k=sPrcl9UjzVfT1wMB68WTOQmI9bwzOjmx',$patch.'/qrCode',false,$patch.'/img/qq_logo.jpg');
 //            $qrCode=stristr($res,'/qrCode/');
             $qrCode=null;
             /*获取配置文件方法*/
@@ -47,7 +48,7 @@ class IndexController extends Controller
              */
 
             /*测试日志工具*/
-            LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
+            //LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
             /*模糊查询方法*/
             $ret3=$indexService->like();
             /*邮件发送测试*/

@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/11/18
- * Time: 14:11
+ * @author 梁朝富 lcf@jionx.com
+ * @function 配置文件加载
  */
-
 namespace core\run;
 
 class GetConfigs

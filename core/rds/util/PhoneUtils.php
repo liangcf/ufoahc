@@ -1,11 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/4
- * Time: 12:10
+ * @author 梁朝富 lcf@jionx.com
+ * @function 判断用户端是否为phone，已被js取代
  */
-
 namespace core\rds\util;
 
 

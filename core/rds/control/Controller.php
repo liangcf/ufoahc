@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: SAMSUNG-R428
- * Date: 16-1-25
+ * @author 梁朝富 lcf@jionx.com
+ * @function 控制器常用的小方法
  */
-
 namespace core\rds\control;
 
 use core\rds\tool\Factory;

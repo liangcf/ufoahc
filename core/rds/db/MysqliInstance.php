@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/27
- * Time: 12:00
+ * @author 梁朝富 lcf@jionx.com
+ * @version 1.0.3
+ * @function 参数化查询的类
  */
 
 namespace core\rds\db;

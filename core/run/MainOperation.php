@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/11/15
- * Time: 11:04
+ * @author 梁朝富 lcf@jionx.com
+ * @function 数据反射
  */
 namespace core\run;
 

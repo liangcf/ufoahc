@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: AF
- * Date: 2016/12/28
- * Time: 15:33
+ * @author 梁朝富 lcf@jionx.com
+ * @function 注册方法
  */
 
 namespace core\rds\tool;
