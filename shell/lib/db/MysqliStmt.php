@@ -23,25 +23,37 @@ class MysqliStmt
     private $_funErrorNo=6001;//外界函数异常代码
     private $_paraErrorNo=6002;//参数异常代码
 
+    private static $instance=null;
+    private static $instanceArr=array();
+
+    private static $dbName='';
     /**
      * @param array $config
      * @throws \Exception
      */
-    function __construct($config=array()){
-        if(!$this->link){
-            if(empty($config)){
-                $defaultDb= require __DIR__ . '/../config/config.php';
-                $config=$defaultDb['default_db'];
-            }
-            $conn=new \mysqli($config['db_host'],$config['db_user'],$config['db_pwd'],$config['db_name'],$config['port']);
-            if($conn->connect_errno){
-                throw new \Exception('database link failed !please configure the run.config.php file under the config folder --error:'.$conn->error.' --connect_errno:'.$conn->connect_errno);
-            }
-            $conn->set_charset($config['db_char_set']);
-            $this->link=$conn;
+    private function __construct($config=array()){
+        if(empty($config)){
+            $defaultDb= require __DIR__ . '/../config/config.php';
+            $config=$defaultDb['default_db'];
         }
+        $conn=new \mysqli($config['db_host'],$config['db_user'],$config['db_pwd'],$config['db_name'],$config['port']);
+        if($conn->connect_errno){
+            throw new \Exception('database link failed !please configure the run.config.php file under the config folder --error:'.$conn->error.' --connect_errno:'.$conn->connect_errno);
+        }
+        $conn->set_charset($config['db_char_set']);
+        self::$dbName=$config['db_name'];
+        $this->link=$conn;
     }
 
+    private function __clone(){}
+
+    public static function getInstance($config=null){
+        if(self::$instance){
+            return self::$instance;
+        }
+        self::$instance=new self($config);
+        return self::$instance;
+    }
     /**
      * 关闭数据连接的
      */

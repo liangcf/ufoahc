@@ -1,4 +1,6 @@
 <?php
+//header('location:https://exmail.qq.com/cgi-bin/loginpage?t=dm_loginpage&s=logout&param=lcf@jionx.com');
+
 $sts=<<<EOF
 <pre>
             Qv.                                                        

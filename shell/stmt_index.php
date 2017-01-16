@@ -7,7 +7,7 @@ include './../init.php';
 
 $runTime=$_SERVER['REQUEST_TIME'];
 try{
-    $test=new \shell\lib\db\MysqliStmt();
+    $test=\shell\lib\db\MysqliStmt::getInstance();
 //    $res=$test->insert('users',array('id'=>'000','name'=>'test','sex'=>0));
 //    $res=$test->insert('users',array());
 //    $res=$test->updateId('users','000',array('name'=>'kddding'));
