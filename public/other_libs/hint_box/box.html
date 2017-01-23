@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link href="base-rest.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+<link href="box-css.css" rel="stylesheet" type="text/css">
+<script src="box-js.js"></script>
+<div id="mask"></div>
+<div id="hint_box" class="hint-box">
+    <div id="hint_warning" class="hint-content">
+        <div class="blocked-close">
+            <div class="hint-close">
+            </div>
+        </div>
+        <div class="blocked-info">
+            <div class="hint-img-warning"></div>
+        </div>
+        <div class="blocked-title">
+            <p class="p-title">警告操作！</p>
+        </div>
+        <div class="blocked-button">
+            <a href="javascript:;" class="hint-button hint-enter">确 定</a>
+            <a href="javascript:;" class="hint-button hint-cancel">取 消</a>
+        </div>
+    </div>
+
+    <div id="hint_warning2" class="hint-content">
+        <div class="blocked-close">
+            <div class="hint-close">
+            </div>
+        </div>
+        <div class="blocked-info">
+            <div class="hint-img-warning"></div>
+        </div>
+        <div class="blocked-title">
+            <p class="p-title">警告操作！</p>
+        </div>
+        <div class="blocked-button">
+            <a href="javascript:;" class="hint-button hint-enter">确 定</a>
+            <a href="javascript:;" class="hint-button hint-cancel">取 消</a>
+        </div>
+    </div>
+
+    <div id="hint_error" class="hint-content">
+        <div class="blocked-close">
+            <div class="hint-close">
+            </div>
+        </div>
+        <div class="blocked-info">
+            <div class="hint-img-error"></div>
+        </div>
+        <div class="blocked-title">
+            <p class="p-title ">操作错误！</p>
+        </div>
+        <div class="blocked-button">
+            <a href="javascript:;" class="hint-button hint-enter">确 定</a>
+            <a href="javascript:;" class="hint-button hint-cancel">取 消</a>
+        </div>
+    </div>
+
+    <div id="hint_error2" class="hint-content">
+        <div class="blocked-close">
+            <div class="hint-close">
+            </div>
+        </div>
+        <div class="blocked-info">
+            <div class="hint-img-error"></div>
+        </div>
+        <div class="blocked-title">
+            <p class="p-title ">操作错误！</p>
+        </div>
+        <div class="blocked-button">
+            <a href="javascript:;" class="hint-button hint-enter">确 定</a>
+        </div>
+    </div>
+
+    <div id="hint_success" class="hint-content">
+        <div class="blocked-close">
+            <div class="hint-close">
+            </div>
+        </div>
+        <div class="blocked-info">
+            <div class="hint-img-success"></div>
+        </div>
+        <div class="blocked-title">
+            <p class="p-title ">操作成功！</p>
+        </div>
+        <div class="blocked-button">
+            <a href="javascript:;" class="hint-button hint-enter">确 定</a>
+        </div>
+    </div>
+
+    <div id="hint_loading" class="hint-content">
+        <div class="blocked-close">
+        </div>
+        <div class="blocked-info">
+            <div class="hint-img-loading"></div>
+        </div>
+        <div class="blocked-title">
+            <p class="p-title ">正在加载中...</p>
+        </div>
+    </div>
+</div>
+
+<button id="my_test">test</button>
+</body>
+</html>
+
+<script src="jquery.min.js"></script>
+
+<script>
+    $(function(){
+       $("#my_test").click(function(){
+           msgBox.show_hint_box("#hint_warning2","确定操作？");
+       });
+        function test(){
+            console.log("6545645646！");
+        }
+        function test2(){
+            alert("取消！");
+        }
+    });
+</script>

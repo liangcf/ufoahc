@@ -83,21 +83,22 @@ class VerifyCode
         //循环写字
         for($i=0;$i<strlen($code);$i++){
             $code_color=imagecolorallocate($img,mt_rand(50,200),mt_rand(50,128),mt_rand(50,200));
-            $charX=(($i*$width)/4)+rand(3,8);
-            $charY=rand(3,8);
+            $yRand=(int)$height/3;
+            $charX=(($i*$width)/$length)+rand(3,$yRand-$length);
+            $charY=rand(3,$yRand+$length);
             imagestring($img,5,$charX,$charY,$code[$i],$code_color);
         }
 
         //干扰的点点
         for($i=0;$i<200;$i++){
             $pointColor=imagecolorallocate($img,rand(50,200),rand(50,200),rand(50,200));
-            imagesetpixel($img,rand(1,99),rand(1,29),$pointColor);
+            imagesetpixel($img,rand(1,$width-1),rand(1,$height-1),$pointColor);
         }
 
         //干扰的线
         for($i=0;$i<4;$i++){
             $linkColor=imagecolorallocate($img,rand(80,220),rand(80,200),rand(20,200));
-            imageline($img,rand(1,99),rand(1,29),rand(1,99),rand(1,29),$linkColor);
+            imageline($img,rand(1,$width-1),rand(1,$height-1),rand(1,$width-1),rand(1,$height-1),$linkColor);
         }
         ob_clean();
         header("Content-type:image/png;");

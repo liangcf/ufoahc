@@ -1,0 +1,14 @@
+#mask{display:none;position:absolute;right:0;left:0;top:0;bottom:0;background:#000;width:100%;opacity:.5;filter:Alpha(Opacity=50);z-index:1045;height:100%}
+.hint-box,.hint-box-feedback{position:fixed;right:0;left:0;top:140px;width:100%;z-index:1046;display:none;font-size:14px}
+.hint-box .hint-content{margin:0 auto;padding:2px;width:366px;height:164px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.hint-box .hint-content .blocked-close .hint-close{float:right;margin:5px 5px 0 0;cursor:pointer;background:url(images/close.png) no-repeat;width:20px;height:20px}
+.hint-box .hint-content .blocked-info{text-align:center;clear:both}
+.hint-box .hint-content .blocked-info .hint-img-warning{margin:13px auto;width:32px;height:32px;background:url(images/warning.png)}
+.hint-box .hint-content .blocked-info .hint-img-error{margin:13px auto;width:32px;height:32px;background:url(images/error.png)}
+.hint-box .hint-content .blocked-info .hint-img-success{margin:13px auto;width:32px;height:32px;background:url(images/success.png)}
+.hint-box .hint-content .blocked-info .hint-img-loading{margin:33px auto;width:32px;height:32px;background:url(images/loading.gif)}
+.hint-box .hint-content .blocked-title{text-align:center}
+.hint-box .hint-content .blocked-title .p-title{font-size:16px}
+.hint-box .hint-content .blocked-button{text-align:center}
+.hint-box .hint-content .blocked-button .hint-button{background:#EFEFEF;margin:20px;color:#000;font-size:15px;width:85px;height:28px;border-radius:5px;line-height:28px;display:inline-block;text-decoration:none}
+.hint-box .hint-content .blocked-button .hint-button:hover{background:#FD5032;color:#fff}
