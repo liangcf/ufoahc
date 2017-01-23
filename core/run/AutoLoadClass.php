@@ -13,7 +13,7 @@ namespace core\run;
 class AutoLoadClass{
     private static $class_Map=array();
     /*自动加载函数*/
-    static public function loader($class){
+    public static function loader($class){
         if(class_exists($class,false)){
             return true;
         }
