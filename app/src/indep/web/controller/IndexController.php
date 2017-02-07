@@ -1,7 +1,7 @@
 <?php
 namespace app\src\indep\web\controller;
 
-use app\src\indep\web\service\IndexService;
+use app\src\indep\web\service\IndexService; //如果举得函数太多，可以写到这里面去
 use core\rds\control\Controller;
 use core\rds\db\Redis;
 use core\rds\util\EmailUtils;
@@ -28,19 +28,16 @@ class IndexController extends Controller
             /*获取配置文件方法*/
             $res1=$this->getConfigValue('my_array');
 //            p($res1);
-            /*实例化service*/
-//            $indexService=new IndexService();
-            /**@var $indexService \app\src\indep\web\service\IndexService*/
-            $indexService=parent::getService('web\service\IndexService');
+            $userDao=parent::dbDao('UsersDao');
             /*根据id查询数据*/
-            $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
-            $indexService->max();
-//            p($res2);
+            $res2=$userDao->selectId('a0acd183542b0d2ab2d52291171aef0b');
             /*查看phone表所有数据*/
-            $phone=$indexService->getPhoneAll();
+            $phoneDao=parent::dbDao('PhoneDao');
+            $phone=$phoneDao->selectAll();
 //            $phone=array();
             /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
-            $res3=$indexService->tGetAll();
+            $stuDao=parent::dbDao('StuDao');
+            $res3=$stuDao->selectAll();
 //            p(parent::uuid());die;
 //            p($res3);
             /*
@@ -50,7 +47,7 @@ class IndexController extends Controller
             /*测试日志工具*/
             //LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
             /*模糊查询方法*/
-            $ret3=$indexService->like();
+            $ret3=$userDao->like('name','郁',array(),array('sort_order'=>'desc'),1,2,array('name','content','sort_order'));
             /*邮件发送测试*/
             //$t=EmailUtils::sendEmail('ownziji@163.com','这里是密码','2271176865@qq.com','这是测试的邮件系统的','这是测试的内容，系统级别的');
             //p($t);
@@ -62,11 +59,11 @@ class IndexController extends Controller
 //            $redis=RedisUtils::getRedis($redisConfig);//此方法需要自己关闭redis
 //            p($redis->get('ufoahc_test'));
 //            RedisUtils::closeRedis();
-            $indexService->count();
-            $indexService->min();
-            $indexService->max();
-            $indexService->avg();
-            $indexService->sum();
+            $userDao->count();
+            $userDao->min('sort_order');
+            $userDao->max('sort_order');
+            $userDao->avg('sort_order');
+            $userDao->sum('sort_order');
             $dbRunTime='访问数据库的时间：'.(microtime(true) - $tTime);
 
             return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime,'phone'=>$phone,'qr_code'=>$qrCode))->response();
@@ -83,8 +80,9 @@ class IndexController extends Controller
             return $this->msg(-1,'不是post请求')->response();
         }
         try{
-            $indexService=new IndexService();
-            $res2=$indexService->getById('a0acd183542b0d2ab2d52291171aef0b');
+            $userDao=parent::dbDao('UsersDao');
+            /*根据id查询数据*/
+            $res2=$userDao->selectId('a0acd183542b0d2ab2d52291171aef0b');
             return $this->msg(0,$res2)->response();
         }catch (\Exception $e){
             return $this->msg(-100,'异常'.$e->getMessage())->response();

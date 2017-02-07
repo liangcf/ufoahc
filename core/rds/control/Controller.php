@@ -192,4 +192,7 @@ abstract class Controller
 	public function getService($className){
 	    return Factory::getServiceObj($className);
     }
+    public static function dbDao($className){
+        return Factory::getDaoObj($className);
+    }
 }
