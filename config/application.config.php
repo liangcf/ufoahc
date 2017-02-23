@@ -3,10 +3,6 @@
  * 此文件为常用修改的配置文件
  */
 return array(
-    /*缓存节点*/
-    'cache'=>array(
-        0=>'/web/index/index',//指定的页面
-    ),
     /*test*/
     'url'=>'www.baidu.com',
     'my_array'=>array(

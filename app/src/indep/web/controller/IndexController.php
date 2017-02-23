@@ -44,6 +44,7 @@ class IndexController extends Controller
              * TODO :: 更多查询 MysqliInstance.php
              */
 
+
             /*测试日志工具*/
             //LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
             /*模糊查询方法*/

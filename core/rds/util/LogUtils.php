@@ -24,10 +24,8 @@ class LogUtils
         if(!is_dir($dir)){
             mkdir($dir,0777,true);
         }
-        if($context){
-            if(!is_string($context)){
-                $context=json_encode($context);
-            }
+        if($context&&!is_string($context)){
+            $context=json_encode($context);
         }
         $fileName=$dir.date('H').$file.'.log';
         $date=date('Y-m-d H:i:s');

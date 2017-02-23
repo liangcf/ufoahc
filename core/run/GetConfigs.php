@@ -14,7 +14,7 @@ class GetConfigs
      * @return mixed
      */
     public static function getAppConfigs(){
-        if(isset(self::$appConfig['application.config'])){
+        if(isset(self::$appConfig['application.data'])){
             return self::$appConfig['application.data'];
         }
         $data=require __DIR__.'/../../config/application.config.php';
@@ -28,7 +28,7 @@ class GetConfigs
      * @return mixed
      */
     public static function getRunConfigs(){
-        if(isset(self::$runConfig['run.config'])){
+        if(isset(self::$runConfig['run.data'])){
             return self::$runConfig['run.data'];
         }
         $runFile=__DIR__.'/../../config/run.config.php';

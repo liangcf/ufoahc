@@ -28,8 +28,5 @@ return array(
         'db_index'=>'0'
     ),
 	/*配置开发环境*/
-	'mode'=>'dev',//pro
-	/*缓存开关*/
-	'cache_flag'=>false,//true开   false关
-	'cache_time'=>120,//单位为秒
+    'mode'=>true,// true开发环境，false非开发环境
 );

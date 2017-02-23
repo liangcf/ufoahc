@@ -11,9 +11,6 @@ public/qrCode/*
 ###########################
 data/logs/*
 !data/logs/readme.md
-var/cache/*
-!var/cache/readme.md
-
 
 ###########################
 #shell 日志路径

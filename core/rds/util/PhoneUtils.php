@@ -5,11 +5,10 @@
  */
 namespace core\rds\util;
 
-
 class PhoneUtils
 {
     /**
-     * 判断是手机访问pc访问
+     * 判断是手机访问pc访问  已经不用了 由js替代
      * @return bool
      */
     public static function isMobile()

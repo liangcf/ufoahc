@@ -15,21 +15,16 @@ class Application
     public function run(){
         $this->runConfig=GetConfigs::getRunConfigs();
         $this->initHeader();
-        $mode=isset($this->runConfig['mode'])?$this->runConfig['mode']:'pro';
-        if($mode!=='dev'){
-            $this->handleException();
-        }else{
+        $mode=isset($this->runConfig['mode'])?$this->runConfig['mode']:false;
+        if($mode===true){
             $runTime=$_SERVER['REQUEST_TIME'];
-        }
-        $cache=isset($this->runConfig['cache_flag'])?$this->runConfig['cache_flag']:false;
-        $action=$this->route();
-        if($cache===true){
-            $this->cacheAction($action);
         }else{
-            $this->action($action);
+            $this->handleException();
         }
-        if($mode==='dev'){
-            echo ' run-time : '.(microtime(true)-$runTime);
+        $action=$this->route();
+        $this->action($action);
+        if($mode===true){
+            echo '<input type="hidden" value="'.(microtime(true)-$runTime).'">';
         }
     }
 
@@ -64,32 +59,10 @@ class Application
         $action=array('_module'=>$_module,'_controller'=>$controller,'_action'=>$_action);
         return $action;
     }
-    /*判断是否缓存的函数*/
-    public function cacheAction($action){
 
-        $_module=$action['_module'];
-        $_controller=$action['_controller'];
-        $_action=$action['_action'];
-        $_url='/'.$_module.'/'.$_controller.'/'.$_action;
-        $_url=strtolower($_url);
-        $cacheTime=isset($this->runConfig['cache_time'])?$this->runConfig['cache_time']:0;
-        $cacheFile = __DIR__ . '/../../var/cache' . $_url.'.html';
-        if (is_file($cacheFile)&&filemtime($cacheFile) + $cacheTime >= time()) {
-            require $cacheFile;
-        }else{
-            @unlink($cacheFile);
-            $this->cache($action);
-        }
-    }
-    /*有缓存*/
-    public function cache($action){
-        $view=new View();
-        $view->cacheView($this->actioning($action));
-    }
-    /*无缓存*/
+    /*转到view*/
     public function action($action){
-        $view=new View();
-        $view->view($this->actioning($action));
+        (new View())->view($this->actioning($action));
     }
     /*实例化控制器返回数据*/
     private function actioning($action){

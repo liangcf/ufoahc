@@ -32,7 +32,7 @@ class Factory
 
     /**
      * @param $className
-     * @return  object
+     * @return \core\rds\service\Service object
      * @throws \Exception
      */
     public static function getServiceObj($className){
