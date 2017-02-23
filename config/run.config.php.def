@@ -5,7 +5,7 @@
 return array(
 	/*数据库配置信息*/
 	'default_db'=>array(
-		'db_host'=>'106.14.32.146',
+		'db_host'=>'127.0.0.1',
 		'db_user'=>'root',
 		'db_pwd'=>'Abcd4321@',
 		'db_name'=>'ufoahc_db',
@@ -14,7 +14,7 @@ return array(
 	),
 	/*配置第二个数据库*/
 	'db_2'=>array(
-		'db_host'=>'106.14.32.146',
+		'db_host'=>'127.0.0.1',
 		'db_user'=>'root',
 		'db_pwd'=>'Abcd4321@',
 		'db_name'=>'ufoahc_db_test',
@@ -28,5 +28,8 @@ return array(
         'db_index'=>'0'
     ),
 	/*配置开发环境*/
-	'mode'=>true,// true开发环境，false非开发环境
+	'mode'=>'dev',//pro
+	/*缓存开关*/
+	'cache_flag'=>false,//true开   false关
+	'cache_time'=>120,//单位为秒
 );

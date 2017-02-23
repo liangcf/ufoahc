@@ -560,10 +560,15 @@ class MysqliInstance
      * @param array $where 获取行数的条件 数据格式 数组键值为数据库字段，键值对应的值为满足获的条件 类似 array('id'=>'king','name'=>'test')
      * @param string $columnName 列名
      * @param array $orWhere or条件
+     * @param bool $distinct false
      * @return string|int
      */
-    public function count($table,$where=array(),$columnName='*',$orWhere=array()){
-        $sql="select count(".$columnName.") as count from ".$table;
+    public function count($table,$where=array(),$columnName='*',$orWhere=array(),$distinct=false){
+        if($distinct){
+            $sql="select count( DISTINCT ".$columnName.") as count from ".$table;
+        }else{
+            $sql="select count(".$columnName.") as count from ".$table;
+        }
         $returnData=$this->_group($sql,$where,$orWhere);
         return $returnData[0]['count'];
     }

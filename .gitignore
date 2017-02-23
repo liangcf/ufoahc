@@ -3,7 +3,7 @@
 ###########################
 #测试
 ###########################
-#config/run.config.php
+config/run.config.php
 public/qrCode/*
 
 ###########################

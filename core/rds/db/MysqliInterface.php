@@ -32,7 +32,7 @@ interface MysqliInterface
 
     public function like($stringName,$content,$where=array(),$order=array(),$offset=0,$fetchNum=0,$getInfo=array('*'),$orWhere=array());
 
-    public function count($where=array(),$columnName='*',$orWhere=array());
+    public function count($where=array(),$columnName='*',$orWhere=array(),$distinct=false);
 
     public function min($columnName,$where=array(),$orWhere=array());
 

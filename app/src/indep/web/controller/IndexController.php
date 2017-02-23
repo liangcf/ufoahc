@@ -51,6 +51,7 @@ class IndexController extends Controller
             /*邮件发送测试*/
             //$t=EmailUtils::sendEmail('ownziji@163.com','这里是密码','2271176865@qq.com','这是测试的邮件系统的','这是测试的内容，系统级别的');
             //p($t);
+            //p($t);
 
             /*测试redis的*/
 //            $indexService->redis();

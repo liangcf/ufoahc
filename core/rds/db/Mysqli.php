@@ -82,8 +82,8 @@ abstract class Mysqli implements MysqliInterface
         return $this->connect->like($this->tableName,$stringName,$content,$where,$order,$offset,$fetchNum,$getInfo,$orWhere);
     }
 
-    public function count($where=array(),$columnName='*',$orWhere=array()){
-        return $this->connect->count($this->tableName,$where,$columnName,$orWhere);
+    public function count($where=array(),$columnName='*',$orWhere=array(),$distinct=false){
+        return $this->connect->count($this->tableName,$where,$columnName,$orWhere,$distinct);
     }
 
     public function min($columnName,$where=array(),$orWhere=array()){
