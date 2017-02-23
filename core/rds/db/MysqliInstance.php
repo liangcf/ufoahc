@@ -26,7 +26,7 @@ class MysqliInstance
     private static $instance=null;
     private static $instanceArr=array();
 
-    private static $dbName='';
+    private static $dbName=array();
 
     private function __construct($config){
         $conn=new \mysqli($config['db_host'],$config['db_user'],$config['db_pwd'],$config['db_name'],$config['port']);
@@ -34,13 +34,13 @@ class MysqliInstance
             throw new \Exception('database link failed !please configure the run.config.php file under the config folder --error:'.$conn->error.' --connect_errno:'.$conn->connect_errno);
         }
         $conn->set_charset($config['db_char_set']);
-        self::$dbName=$config['db_name'];
+        self::$dbName[$config['db_name']]=$config['db_name'];
         $this->link=$conn;
     }
     private function __clone(){}
 
     public static function getInstance($config){
-        if(self::$instance&&self::$dbName==$config['db_name']){
+        if(self::$instance&&isset(self::$dbName[$config['db_name']])){
             return self::$instance;
         }
         self::$instance=new self($config);
