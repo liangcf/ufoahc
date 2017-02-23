@@ -9,7 +9,7 @@ namespace core\rds\db;
 class RedisInstance
 {
     private static $instance=null;
-    private static $connect=null;
+    private static $redisObj=array();
     private $redis=null;
 
     /**
@@ -19,12 +19,12 @@ class RedisInstance
      */
     private function __construct($config){
         if(empty($config)){
-            throw new \Exception('$config null');
+            throw new \Exception('redis config null');
         }
         try{
             $this->redis=new \Redis();
             $dbIndex=isset($redis_info['db_index'])?$redis_info['db_index']:'0';
-            self::$connect=$this->redis->connect($config['host'],$config['port']);
+            self::$redisObj[$config['host'].':'.$config['port']]=$this->redis->connect($config['host'],$config['port']);
             $this->redis->select($dbIndex); //数据库选择
         }catch (\Exception $e){
             throw new \Exception('create redis connection Fail:'.$e->getMessage());
@@ -38,7 +38,7 @@ class RedisInstance
      * @return RedisInstance|null
      */
     public static function initRedis($config){
-        if(self::$instance&&self::$connect){
+        if(self::$instance&&isset(self::$redisObj[$config['host'].':'.$config['port']])){
             return self::$instance;
         }
         self::$instance=new self($config);
@@ -55,7 +55,8 @@ class RedisInstance
 
     function __destruct(){
         if(!empty($this->redis)){
-            self::$connect=null;
+            self::$instance=null;
+            self::$redisObj=array();
             $this->redis->close();
         }
     }

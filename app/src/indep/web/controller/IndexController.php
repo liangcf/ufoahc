@@ -55,12 +55,13 @@ class IndexController extends Controller
             //p($t);
 
             /*测试redis的*/
-//            $indexService->redis();
-//            $indexService->redis2();
-//            $redisConfig=$this->getRunConfigValue('redis');
 //            $redis=RedisUtils::getRedis($redisConfig);//此方法需要自己关闭redis
 //            p($redis->get('ufoahc_test'));
 //            RedisUtils::closeRedis();
+//            $redis=Redis::getRedis();
+//            p($redis->get('ufoahc_test'));
+//            $redis2=Redis::getRedis();
+//            p($redis2->get('ufoahc_test'));
             $userDao->count();
             $userDao->min('sort_order');
             $userDao->max('sort_order');
@@ -77,6 +78,12 @@ class IndexController extends Controller
 
     /*接口方式*/
     public function apiAction(){
+//        $redis=Redis::getRedis();
+//        $redis->set('ufoahc_test','liangchaofu111');
+//        p($redis->get('ufoahc_test'));
+//        $redis2=Redis::getRedis();
+//        p($redis2->get('ufoahc_test'));
+//        die;
         $this->api();
         if(!$this->isPost()){
             return $this->msg(-1,'不是post请求')->response();

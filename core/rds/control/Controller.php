@@ -1,7 +1,7 @@
 <?php
 /**
  * @author 梁朝富 lcf@jionx.com
- * @function 控制器常用的小方法
+ * @function 控制器常用的方法
  */
 namespace core\rds\control;
 
@@ -134,7 +134,7 @@ abstract class Controller
 		$_SESSION[$key] = $value;
 	}
 	/**
-	 * 密码处理
+	 * 简单密码处理
 	 * @param $pwd
 	 * @return string
 	 */
@@ -192,7 +192,7 @@ abstract class Controller
 	public function getService($className){
 	    return Factory::getServiceObj($className);
     }
-    public static function dbDao($className){
+    public function dbDao($className){
         return Factory::getDaoObj($className);
     }
 }

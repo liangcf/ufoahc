@@ -6,24 +6,25 @@
 
 namespace core\rds\db;
 
+use core\run\GetConfigs;
 
 class Redis
 {
-    /**
-     * @var \Redis
-     */
-    private static $connect=null;
+    private static $redisObj=array();
 
     /**
-     * @param $config
-     * @return null|\Redis
+     * @param array $config
+     * @return \Redis
      */
-    public static function getRedis($config){
-        if(self::$connect){
-            return self::$connect;
+    public static function getRedis($config=array()){
+        if(empty($config)){
+            $config=GetConfigs::getRunConfigs()['redis'];
+        }
+        if(isset(self::$redisObj[$config['host'].':'.$config['port']])){
+            return self::$redisObj[$config['host'].':'.$config['port']];
         }
         $redis=RedisInstance::initRedis($config);
-        self::$connect=$redis->getRedisConn();
-        return self::$connect;
+        self::$redisObj[$config['host'].':'.$config['port']]=$redis->getRedisConn();
+        return self::$redisObj[$config['host'].':'.$config['port']];
     }
 }
