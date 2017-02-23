@@ -50,7 +50,6 @@
     │   ├─db_connect.php 测试数据库是否链接成功 
     │   └─ufoahc_db.php 在上一级的config文件夹内的db.config.php 数据库配置文件配置完毕启动php命令执行就可以测试使用
     ├─var 附加
-    │   ├─cache 静态化页面的缓存
     └   └─error-page 错误提示页面
 
 访问：
