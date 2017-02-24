@@ -6,6 +6,7 @@
 namespace core\rds\control;
 
 use core\rds\tool\Factory;
+use core\run\ErrorHandle;
 use core\run\GetConfigs;
 
 abstract class Controller
@@ -189,9 +190,13 @@ abstract class Controller
 		return $this->_layOut;
 	}
 
-	/*设置错误*/
+	/*抛出错误异常信息*/
 	protected function errorInfo($info){
 		throw new \Exception($info,404);
+	}
+	/*跳到错误页面*/
+	protected function errorPage($errorInfo,$errorMsg=null){
+		ErrorHandle::errorPage($errorInfo,$errorMsg);
 	}
 
 	public function getService($className){

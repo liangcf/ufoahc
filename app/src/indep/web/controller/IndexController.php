@@ -15,6 +15,7 @@ class IndexController extends Controller
     //public $_layOut='layout.pc'; //默认就是指向layout.pc
 
     public function indexAction(){
+//        $this->errorPage('网络错误！请重试','网络错误');
         try{
             $tTime=$_SERVER['REQUEST_TIME'];
             /*设置layout指向layout.mobile*/

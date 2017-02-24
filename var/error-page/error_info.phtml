@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开发错误</title>
+</head>
+<style>
+    h1{font-size:100px;text-align:center;margin:0;padding:0;font-family:KaiTi}
+    h2{text-align: center;}
+</style>
+<body>
+<h1><?php echo !empty($msg)?$msg:'错误信息'; ?></h1>
+<hr>
+<?php
+$message=isset($info)?$info:'没有详细错误信息！';
+?>
+<h2><?php print_r($message); ?></h2>
+</body>
+</html>

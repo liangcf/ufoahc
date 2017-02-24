@@ -111,8 +111,7 @@ class Application
     public function error_function($errno, $errstr, $errfile, $errline, $errcontext){
         /*log*/
         self::log('error_function','error_function',array('errno' => $errno,'errstr' => $errstr, 'errfile' => $errfile, 'errline' => $errline, 'errcontext' => $errcontext),__DIR__.'/../../data/logs');
-        require __DIR__ . '/../../var/error-page/404.html';
-        exit;
+        ErrorHandle::error404();
     }
 
     /**
@@ -121,12 +120,10 @@ class Application
     public function exception_function($e){
         /*log*/
         self::log('exception_function','exception_function',$e->getMessage(),__DIR__.'/../../data/logs');
-        switch ($e->getCode()){
-            case 404:
-                require __DIR__ . '/../../var/error-page/404.html';
-                break;
-            default:
-                require __DIR__ . '/../../var/error-page/500.html';
+        if($e->getCode()==404){
+            ErrorHandle::error404();
+        }else{
+            ErrorHandle::error500();
         }
         exit;
     }

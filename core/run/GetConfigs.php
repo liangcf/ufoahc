@@ -37,7 +37,7 @@ class GetConfigs
             self::$runConfig['run.data']=$data;
             return self::$runConfig['run.data'];
         }
-        include __DIR__ . '/../../var/error-page/error_config.html';
+        ErrorHandle::errorConfig();
         exit;
     }
 
