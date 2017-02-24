@@ -8,22 +8,20 @@ namespace core\run;
 class Application
 {
     private $runConfig;
+    private $dev;
     /**
      * 入口
      * @throws \Exception
      */
     public function run(){
-        $this->runConfig=GetConfigs::getRunConfigs();
         $this->initHeader();
-        $mode=isset($this->runConfig['mode'])?$this->runConfig['mode']:false;
-        if($mode===true){
-            $runTime=$_SERVER['REQUEST_TIME'];
-        }else{
-            $this->handleException();
-        }
+        $runTime=$_SERVER['REQUEST_TIME'];
+        $this->runConfig=GetConfigs::getRunConfigs();
+        $this->dev=isset($this->runConfig['mode'])?$this->runConfig['mode']:false;
+        $this->handleException();
         $action=$this->route();
         $this->action($action);
-        if($mode===true){
+        if($this->dev===true){
             echo '<input type="hidden" value="'.(microtime(true)-$runTime).'">';
         }
     }
@@ -101,10 +99,12 @@ class Application
 
     //非开发环境全局处理error(warning)，exception,shutdown
     private function handleException(){
-        error_reporting(E_ERROR | E_WARNING | E_PARSE);
-        set_error_handler(array($this,'error_function'));
-        set_exception_handler(array($this,'exception_function'));
-        register_shutdown_function(array($this,'shutdown_function'));
+        if($this->dev!==true){
+            error_reporting(E_ERROR | E_WARNING | E_PARSE);
+            set_error_handler(array($this,'error_function'));
+            set_exception_handler(array($this,'exception_function'));
+            register_shutdown_function(array($this,'shutdown_function'));
+        }
     }
 
     //1=>'ERROR', 2=>'WARNING', 4=>'PARSE', 8=>'NOTICE'
@@ -126,7 +126,7 @@ class Application
                 require __DIR__ . '/../../var/error-page/404.html';
                 break;
             default:
-                require __DIR__ . '/../../var/error-page/500.phtml';
+                require __DIR__ . '/../../var/error-page/500.html';
         }
         exit;
     }

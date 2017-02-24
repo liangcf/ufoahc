@@ -37,8 +37,7 @@ class GetConfigs
             self::$runConfig['run.data']=$data;
             return self::$runConfig['run.data'];
         }
-        $message='<h2 style="text-align: center">没有配置文件[run.config.php]</h2>';
-        include __DIR__ . '/../../var/error-page/500.phtml';
+        include __DIR__ . '/../../var/error-page/error_config.html';
         exit;
     }
 

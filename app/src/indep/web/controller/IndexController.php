@@ -37,13 +37,13 @@ class IndexController extends Controller
 //            $phone=array();
             /*查询--第二个数据库的所有数据,使用的时候建议不要在同一个service上使用*/
             $stuDao=parent::dbDao('StuDao');
+
             $res3=$stuDao->selectAll();
 //            p(parent::uuid());die;
 //            p($res3);
             /*
              * TODO :: 更多查询 MysqliInstance.php
              */
-
 
             /*测试日志工具*/
             //LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
@@ -71,8 +71,9 @@ class IndexController extends Controller
 
             return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime,'phone'=>$phone,'qr_code'=>$qrCode))->response();
         }catch (\Exception $e){
-            echo $e->getMessage();
-            die;
+            LogUtils::log('test','异常',$e->getMessage());
+            echo '网络错误！重试！';
+            exit();
         }
     }
 
