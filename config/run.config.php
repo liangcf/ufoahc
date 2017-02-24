@@ -4,7 +4,7 @@
  */
 return array(
 	/*数据库配置信息*/
-	'default_db'=>array(
+	'db'=>array(
 		'db_host'=>'106.14.32.146',
 		'db_user'=>'root',
 		'db_pwd'=>'Abcd4321@',

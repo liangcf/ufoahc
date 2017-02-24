@@ -189,6 +189,11 @@ abstract class Controller
 		return $this->_layOut;
 	}
 
+	/*设置错误*/
+	protected function errorInfo($info){
+		throw new \Exception($info,404);
+	}
+
 	public function getService($className){
 	    return Factory::getServiceObj($className);
     }

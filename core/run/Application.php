@@ -139,7 +139,7 @@ class Application
         exit;
     }
 
-    public static function log($file,$message,$context,$dir){
+    private static function log($file,$message,$context,$dir){
         $dir=rtrim($dir,'/');
         $dir=$dir.'/error_exception/';
         if(!is_dir($dir)){

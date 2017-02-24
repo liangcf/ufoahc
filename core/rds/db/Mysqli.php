@@ -3,11 +3,10 @@
  * @author 梁朝富 lcf@jionx.com
  */
 
-
 namespace core\rds\db;
 
 
-abstract class Mysqli implements MysqliInterface
+abstract class Mysqli //implements MysqliInterface
 {
     /**
      * 表名

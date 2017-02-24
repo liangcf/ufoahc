@@ -16,6 +16,8 @@
     "psr-4": {
       "core\\rds\\control\\": "core/rds/control/",
       "core\\rds\\db\\": "core/rds/db/",
+      "core\\rds\\service\\": "core/rds/service/",
+      "core\\rds\\tool\\": "core/rds/tool/",
       "core\\rds\\util\\": "core/rds/util/",
 
       "core\\run\\": "core/run/",
@@ -26,7 +28,7 @@
 
       "app\\src\\indep\\web\\":"app/src/indep/web/",
       "app\\src\\indep\\web\\controller\\": "app/src/indep/web/controller/",
-      "app\\src\\indep\\service\\": "app/src/indep/web/service/",
+      "app\\src\\indep\\web\\service\\": "app/src/indep/web/service/",
 
       "app\\src\\indep\\admin\\": "app/src/indep/admin/",
       "app\\src\\indep\\admin\\controller\\":"app/src/indep/admin/controller/",

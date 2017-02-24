@@ -14,7 +14,7 @@ class Factory
     /**
      * 返回Dao实例
      * @param $className
-     * @return \core\rds\db\MysqliInterface object
+     * @return \core\rds\db\Mysqli object
      * @throws \Exception
      */
     public static function getDaoObj($className){

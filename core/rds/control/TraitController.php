@@ -19,8 +19,7 @@ trait TraitController
         $this->context['response'] = array(
             'data' => null,
             'api' => false,
-            'view' => null,
-            'error' => false
+            'view' => null
         );
     }
     protected function msg($code, $msg){
@@ -32,12 +31,6 @@ trait TraitController
         $this->context['response']['data'] = $data;
         return $this;
     }
-
-    protected function error(){
-        $this->context['response']['error'] = true;
-        return $this;
-    }
-
 
     protected function json(){
         $this->context['response']['data'] = json_encode($this->context['response']['data'], JSON_UNESCAPED_UNICODE);

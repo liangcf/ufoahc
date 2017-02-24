@@ -27,7 +27,7 @@ class IndexController extends Controller
             $qrCode=null;
             /*获取配置文件方法*/
             $res1=$this->getConfigValue('my_array');
-//            p($res1);
+//            p($res1);die;
             $userDao=parent::dbDao('UsersDao');
             /*根据id查询数据*/
             $res2=$userDao->selectId('a0acd183542b0d2ab2d52291171aef0b');

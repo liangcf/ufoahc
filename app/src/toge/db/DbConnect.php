@@ -21,6 +21,6 @@ abstract class DbConnect extends Mysqli
     function __construct($tableName,$id='id'){
         $this->tableName=$tableName;
         $this->tableId=$id;
-        $this->initConnect(GetConfigs::getRunConfigs()['default_db']);
+        parent::initConnect(GetConfigs::getRunConfigs()['db']);
     }
 }

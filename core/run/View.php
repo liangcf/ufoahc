@@ -14,9 +14,6 @@ class View
 
     /*视图*/
     public function view($whole){
-        if($whole['whole']['data']['error']===true){
-            throw new \Exception('系统错误','404');
-        }
         $this->data=$data=$whole['whole']['data']['data'];
         if(isset($whole['whole']['data']['api'])&&$whole['whole']['data']['api']===true){
             $this->renderAPI($data);
@@ -50,7 +47,7 @@ class View
         echo '<script type="text/javascript" src="'.$var.'"></script>';
     }
     /*输出函数*/
-    public function echos($string,$default=null){
+    public function _echo($string,$default=null){
         if(empty($key)){
             echo $default;
         }else{
@@ -64,7 +61,10 @@ class View
         }
         return isset($this->data[$key])?$this->data[$key]:$default;
     }
-
+    /*获取全局变量的值*/
+    public function getAllData($default=null){
+        return isset($this->overall)?$this->overall:$default;
+    }
 
     private function apiHeader(){
         header('Content-Type: application/json; charset=UTF-8');
