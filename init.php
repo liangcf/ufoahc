@@ -5,7 +5,7 @@
  * @link https://github.com/liangcf/ufoahc
  */
 //打印函数
-include 'var/function.php';
+include 'data/var/function.php';
 
 require 'core/run/AutoLoadClass.php';
 //自动加载类 '\core\run\AutoLoadClass::loader'

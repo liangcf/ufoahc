@@ -1,6 +1,7 @@
 <?php
 /**
- * @author 梁朝富 lcf@jionx.com
+ * @author 梁朝富
+ * @mail lcf@jionx.com
  * @function 入口
  */
 namespace core\run;
@@ -27,39 +28,40 @@ class Application
     }
 
     /*拼装路由*/
-    public function route(){
+    private function route(){
         $_reqUri=$_SERVER['REQUEST_URI'];
         $_index=strpos($_reqUri,'?');
         $_uri=$_index>0?substr($_reqUri,0,$_index):$_reqUri;
         if(stripos($_uri,'index.php')){
             throw new \Exception('访问出错！', 404);
         }
+        $action=$this->runConfig['route'];
         if($_uri=='/'){
-            $action=array('_module'=>'web','_controller'=>'index','_action'=>'index');
+            //$action=array('_module'=>'web','_controller'=>'index','_action'=>'index');
             return $action;
         }
         $pathArr=explode('/',trim($_uri,'/'));
         if(isset($pathArr[0])){
             $_module=$pathArr[0];
         }else{
-            $_module='web';
+            $_module=$action['_module'];
         }
         if(isset($pathArr[1])){
             $controller=$pathArr[1];
         }else{
-            $controller='index';
+            $controller=$action['_controller'];
         }
         if(isset($pathArr[2])){
             $_action=$pathArr[2];
         }else{
-            $_action='index';
+            $_action=$action['_action'];
         }
         $action=array('_module'=>$_module,'_controller'=>$controller,'_action'=>$_action);
         return $action;
     }
 
     /*转到view*/
-    public function action($action){
+    private function action($action){
         (new View())->view($this->actioning($action));
     }
     /*实例化控制器返回数据*/

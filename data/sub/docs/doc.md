@@ -40,8 +40,9 @@
     │   └─run.config.php 数据库运行等配置文件
     ├─core 库
     ├─data 库
-    │   ├─docs 文档脚本等文件夹
-    │   └─logs 日志文件夹
+    │   ├─logs 日志文件夹
+    │   ├─sub 附加的
+    │   └─var 附加的错误页面等
     ├─public 工作目录
     │   └─index.php 入口文件
     ├─shell 后台命令执行的文件夹

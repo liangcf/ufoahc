@@ -29,4 +29,10 @@ return array(
     ),
 	/*配置开发环境*/
 	'mode'=>true,// true开发环境，false非开发环境
+    /*配置首页文件*/
+    'route'=>array(
+        '_module'=>'web', //与app/src/indep/下的模块对应
+        '_controller'=>'index', //与控制器名称对应
+        '_action'=>'index' //对应控制器下的action
+    ),
 );

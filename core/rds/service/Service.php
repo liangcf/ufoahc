@@ -11,7 +11,7 @@ abstract class Service
 {
     /**
      * @param $dao
-     * @return \core\rds\db\MysqliInterface
+     * @return \core\rds\db\Mysqli
      */
     public function dbDao($dao){
         return Factory::getDaoObj($dao);
