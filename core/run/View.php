@@ -46,12 +46,20 @@ class View
     public function appendJs($var){
         echo '<script type="text/javascript" src="'.$var.'"></script>';
     }
+    /*年月日转换*/
+    public function getYMD($time){
+        if(empty($time)){
+            return date("Y-m-d",time());
+        }else{
+            return date("Y-m-d",strtotime($time));
+        }
+    }
     /*输出函数*/
     public function _echo($string,$default=null){
-        if(empty($key)){
+        if(empty($string)){
             echo $default;
         }else{
-            echo isset($string)?$string:$default;
+            echo $string;
         }
     }
     /*判断是否存在的值*/

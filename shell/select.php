@@ -5,7 +5,7 @@ include './../init.php';
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 try{
-    $mysqli=new \shell\lib\db\MysqliStmt();
+    $mysqli=\shell\lib\db\MysqliStmt::getInstance();
     $ret=$mysqli->selects('users',array('sex'=>0),array('sort_order'=>'desc'),5,12);
     p($ret);
 }catch (Exception $e){
