@@ -14,29 +14,34 @@ class View
 
     /*视图*/
     public function view($whole){
-        $this->data=$data=$whole['whole']['data']['data'];
+        $this->data=$whole['whole']['data']['data'];
         if(isset($whole['whole']['data']['api'])&&$whole['whole']['data']['api']===true){
-            $this->renderAPI($data);
+            $this->renderAPI($this->data);
         }
         $transfer['before']=$whole['whole']['before'];
         $transfer['data']=$whole['whole']['data']['data'];
         $transfer['after']=$whole['whole']['after'];
-        $this->overall=$overall=$transfer;
+        $this->overall=$transfer;
         if($whole['whole']['data']['view']!==null){
             $_url='/app/view/indep'.$whole['whole']['data']['view'];
         }else{
             $_url='/app/view/indep'.$whole['wholes']['view_dir'];
         }
-        $_layMode=$whole['wholes']['layout'];
-        $_tmpDir=__DIR__.'/../..';
-        $_content=$_tmpDir.strtolower($_url).'.phtml';
-        $_layUrl='/app/view/layout/'.$_layMode.'.phtml';
-        $_layOutFile=$_tmpDir.strtolower($_layUrl);
-        if(is_file($_content)&&is_file($_layOutFile)){
-            require $_layOutFile;
+        $layMode=$whole['wholes']['layout'];
+        $tmpDir=__DIR__.'/../..';
+        $content=$tmpDir.strtolower($_url).'.phtml';
+        $layUrl='/app/view/layout/'.$layMode.'.phtml';
+        $layOutFile=$tmpDir.strtolower($layUrl);
+        if(is_file($content)&&is_file($layOutFile)){
+            $this->views($layOutFile,$content);
         }else{
-            throw new \Exception('View is not found:'.$_content,404);
+            throw new \Exception('View is not found:'.$content,404);
         }
+    }
+    private function views($_layOutFile,$_content){
+        $data=$this->data;
+        $overall=$this->overall;
+        require $_layOutFile;
     }
     /*加载css方法*/
     public function appendCss($var){

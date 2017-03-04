@@ -11,6 +11,10 @@ namespace core\run;
 
 class ErrorHandle
 {
+    public static function redirect($num){
+        header('location:/error.php?num='.$num);
+        exit();
+    }
     public static function errorPage($errorInfo,$errorMsg){
         $msg=$errorMsg;
         $info=$errorInfo;
@@ -19,17 +23,19 @@ class ErrorHandle
     }
 
     public static function error404(){
+        ob_clean();
         require __DIR__ . '/../../data/var/error-page/404.html';
         exit;
     }
 
     public static function error500(){
+        ob_clean();
         require __DIR__ . '/../../data/var/error-page/500.html';
         exit;
     }
 
     public static function errorConfig(){
-        include __DIR__ . '/../../data/var/error-page/error_config.html';
+        require __DIR__ . '/../../data/var/error-page/error_config.html';
         exit;
     }
 }
