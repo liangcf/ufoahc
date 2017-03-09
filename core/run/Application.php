@@ -112,7 +112,7 @@ class Application
     //1=>'ERROR', 2=>'WARNING', 4=>'PARSE', 8=>'NOTICE'
     public function error_function($errno, $errstr, $errfile, $errline, $errcontext){
         /*log*/
-        self::log('error_function','error_function',array('errno' => $errno,'errstr' => $errstr, 'errfile' => $errfile, 'errline' => $errline, 'errcontext' => $errcontext),__DIR__.'/../../data/logs');
+        self::log('error_function','error_function',array('errno' => $errno,'errstr' => $errstr, 'errfile' => $errfile, 'errline' => $errline, 'errcontext' => $errcontext));
         ErrorHandle::error404();
     }
 
@@ -121,7 +121,7 @@ class Application
      */
     public function exception_function($e){
         /*log*/
-        self::log('exception_function','exception_function',$e->getMessage(),__DIR__.'/../../data/logs');
+        self::log('exception_function','exception_function',$e->getMessage());
         if($e->getCode()==404){
             ErrorHandle::error404();
         }else{
@@ -133,14 +133,18 @@ class Application
     public function shutdown_function(){
         $error = error_get_last();
         if(!empty($error)){
-            self::log('shutdown_function','shutdown_function',$error,__DIR__.'/../../data/logs');
+            self::log('shutdown_function','shutdown_function',$error);
         }
         exit;
     }
 
-    private static function log($file,$message,$context,$dir){
-        $dir=rtrim($dir,'/');
-        $dir=$dir.'/error_exception/';
+    private static function log($file,$message,$context,$dir=null){
+        if($dir){
+            $dirs=rtrim($dir,'/');
+        }else{
+            $dirs=__DIR__.'/../../data/logs';
+        }
+        $dir=$dirs.'/error_exception/';
         if(!is_dir($dir)){
             mkdir($dir,0777,true);
         }
