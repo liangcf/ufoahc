@@ -10,6 +10,11 @@ class Application
 {
     private $runConfig;
     private $dev;
+    private static $config;
+    public static function init(){
+        self::$config=GetConfigs::getRunConfigs();
+        return new self();
+    }
     /**
      * 入口
      * @throws \Exception
@@ -17,8 +22,8 @@ class Application
     public function run(){
         $this->initHeader();
         $runTime=$_SERVER['REQUEST_TIME'];
-        $this->runConfig=GetConfigs::getRunConfigs();
-        $this->dev=isset($this->runConfig['mode'])?$this->runConfig['mode']:false;
+//        self::$config=GetConfigs::getRunConfigs();
+        $this->dev=isset(self::$config['mode'])?self::$config['mode']:false;
         $this->handleException();
         $action=$this->route();
         $this->action($action);
@@ -35,7 +40,7 @@ class Application
         if(stripos($_uri,'index.php')){
             throw new \Exception('访问出错！', 404);
         }
-        $action=$this->runConfig['route'];
+        $action=self::$config['route'];
         if($_uri=='/'){
             //$action=array('_module'=>'web','_controller'=>'index','_action'=>'index');
             return $action;
