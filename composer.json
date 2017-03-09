@@ -14,29 +14,19 @@
   },
   "autoload": {
     "psr-4": {
-      "core\\rds\\control\\": "core/rds/control/",
-      "core\\rds\\db\\": "core/rds/db/",
-      "core\\rds\\service\\": "core/rds/service/",
-      "core\\rds\\tool\\": "core/rds/tool/",
-      "core\\rds\\util\\": "core/rds/util/",
+      "core\\src\\control\\": "core/src/control/",
+      "core\\src\\db\\": "core/src/db/",
+      "core\\src\\service\\": "core/src/service/",
+      "core\\src\\tool\\": "core/src/tool/",
+      "core\\src\\util\\": "core/src/util/",
 
       "core\\run\\": "core/run/",
 
-      "app\\src\\toge\\db\\":"app/src/toge/db/",
-      "app\\src\\toge\\dao\\":"app/src/toge/dao/",
-      "app\\src\\toge\\utils\\":"app/src/toge/utils/",
-
-      "app\\src\\indep\\web\\":"app/src/indep/web/",
-      "app\\src\\indep\\web\\controller\\": "app/src/indep/web/controller/",
-      "app\\src\\indep\\web\\service\\": "app/src/indep/web/service/",
-
-      "app\\src\\indep\\admin\\": "app/src/indep/admin/",
-      "app\\src\\indep\\admin\\controller\\":"app/src/indep/admin/controller/",
-      "app\\src\\indep\\admin\\service\\":"app/src/indep/admin/service/",
-
-      "app\\src\\indep\\mobile\\":"app/src/indep/mobile/",
-      "app\\src\\indep\\mobile\\controller\\": "app/src/indep/mobile/controller/",
-      "app\\src\\indep\\mobile\\service\\": "app/src/indep/mobile/service/"
+      "app\\example\\src\\controller\\":"app/example/src/controller/",
+      "app\\example\\src\\dao\\":"app/example/src/dao/",
+      "app\\example\\src\\db\\":"app/example/src/db/",
+      "app\\example\\src\\service\\":"app/example/src/service/",
+      "app\\example\\src\\utils\\":"app/example/src/utils/"
     }
   }
 }

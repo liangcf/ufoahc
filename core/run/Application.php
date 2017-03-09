@@ -69,20 +69,21 @@ class Application
         $_module=$action['_module'];
         $_controller=$action['_controller'];
         $_action=$action['_action'];
-        $_url='/'.$_module.'/'.$_controller.'/'.$_action;
+        $_url='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/'.$_action;
         /* 组装类路径 */
-        $_className='app\\src\\indep\\'.strtolower($_module).'\\controller\\'.ucfirst($_controller).'Controller';
+        $_className='app\\'.strtolower($_module).'\\src\\controller\\'.ucfirst($_controller).'Controller';
         $_funName=$_action.'Action';
         if(!class_exists($_className)){
             throw new \Exception("Controller in not found",404);
         }
-        $data=MainOperation::mainMethod($_className,$_funName);
+        $data=MainRun::runMethod($_className,$_funName,strtolower($_module));
         if(empty($data)){
             throw new \Exception("not return data",404);
         }
-        $wholes['layout']=$data['layout'];
+        $wholes['layout']='/app/'.$_module.'/view/layout/'.$data['layout'];
         /* 寻找视图文件的路径 */
         $wholes['view_dir']=$_url;
+        $wholes['view_diy']='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/';;
 
         $whole['before']=$data['before'];
         $whole['data']=$data['data'];

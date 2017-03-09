@@ -10,4 +10,3 @@ if (is_file('./'.parse_url(@$_SERVER['REQUEST_URI'], PHP_URL_PATH))||stristr('cl
 include '../init.php';
 //执行开始
 (new \core\run\Application())->run();
-//\core\run\Entry::run();

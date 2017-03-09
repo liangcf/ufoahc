@@ -1,0 +1,51 @@
+<p>这里是中间操作区域</p>
+<p>页面取值方式 $this->data['返回的键值']或者$data['返回的键值']</p>
+加载css的方式：$this->appendCss('/css/web/test.css');
+<hr>
+<?php
+$this->appendCss('/css/test.css');
+//$this->appendCss('/css/test2.css');
+
+?>
+<link type="text/css" rel="stylesheet" href="/css/test2.css"/>
+<p>生成的二维码</p>
+<img src="<?php echo $this->data['qr_code']; ?>" style="width: 150px">
+<div>
+    <?php echo $this->data['db_time']; ?>
+</div>
+<hr>
+<div class="test">
+    <p class="font-one">
+        从后台输出时间：
+        <?php
+        print_r($this->data['date_test']);
+        ?>
+    </p>
+</div>
+<div class="test2">
+    <p class="font-da2">
+        后台输出的数据1
+        <?php print_r($this->data['my_result']); ?>
+    </p>
+</div>
+<div class="test3">
+    <p>后台输出的数据2</p>
+    <?php print_r($this->data['ret']); ?>
+</div>
+<hr>
+<div class="test4">
+    <p>电话的那个表3</p>
+    <?php print_r($this->data['phone']); ?>
+</div>
+加载js的方式：$this->appendJs('/js/web/test2.js');
+<?php
+$this->appendJs('/js/test2.js');
+$this->appendJs('/js/test.js');
+?>
+
+<script>
+    $(function(){
+        test();
+//        test2();
+    })
+</script>
