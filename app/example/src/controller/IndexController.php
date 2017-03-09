@@ -1,10 +1,10 @@
 <?php
 namespace app\example\src\controller;
 
-use core\rds\util\EmailUtils;
+use core\src\utils\EmailUtils;
 use core\src\control\Controller;
-use core\src\util\LogUtils;
-use core\src\util\QRCodeUtils;
+use core\src\utils\LogUtils;
+use core\src\utils\QRCodeUtils;
 
 class IndexController extends Controller
 {
@@ -12,13 +12,13 @@ class IndexController extends Controller
 //        $this->errorPage('网络错误！请重试','网络错误');
         try{
             /*设置layout指向layout.mobile*/
-            $this->_setLayOut('test');
+//            $this->_setLayOut('test');
 //            $this->view('kkk');
             $tTime=$_SERVER['REQUEST_TIME'];
             /*测试二维码生成工具*/
             $patch=$_SERVER['DOCUMENT_ROOT'];
-//            $res=QRCodeUtils::createQRCode($this->uuid(),'http://weixin.qq.com/r/fTvfx0vE-xaArQ_k925v',$patch.'/qrCode',false,$patch.'/img/jxz_logo.jpg');
-//            $res=QRCodeUtils::createQRCode($this->uuid(),'http://qm.qq.com/cgi-bin/qm/qr?k=sPrcl9UjzVfT1wMB68WTOQmI9bwzOjmx',$patch.'/qrCode',false,$patch.'/img/qq_logo.jpg');
+//            $res=QRCodeUtils::createQRCode($this->uuid(),'http://weixin.qq.com/r/HOIIEFjERwU4rRxz97cO',$patch.'/qrCode',false,$patch.'/img/wx_logo.jpg');
+//            $res=QRCodeUtils::createQRCode($this->uuid(),'http://qm.qq.com/cgi-bin/qm/qr?k=RNJWNqoys5CLhvmf9ECM12_YnjCRVn3Y',$patch.'/qrCode',false,$patch.'/img/qq_logo.jpg');
 //            $qrCode=stristr($res,'/qrCode/');
             $qrCode=null;
             /*获取配置文件方法*/

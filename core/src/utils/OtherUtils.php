@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 不安全的临时的加密揭秘
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class OtherUtils
 {

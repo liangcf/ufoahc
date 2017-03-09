@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 判断用户端是否为phone，已被js取代
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class PhoneUtils
 {

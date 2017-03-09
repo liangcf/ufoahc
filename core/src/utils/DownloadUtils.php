@@ -1,6 +1,5 @@
 <?php
-
-namespace core\src\util;
+namespace core\src\utils;
 
 /**
  * 下载工具类

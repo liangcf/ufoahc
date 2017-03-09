@@ -18,7 +18,7 @@
       "core\\src\\db\\": "core/src/db/",
       "core\\src\\service\\": "core/src/service/",
       "core\\src\\tool\\": "core/src/tool/",
-      "core\\src\\util\\": "core/src/util/",
+      "core\\src\\utils\\": "core/src/utils/",
 
       "core\\run\\": "core/run/",
 

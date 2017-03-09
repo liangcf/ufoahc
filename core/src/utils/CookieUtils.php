@@ -4,7 +4,7 @@
  * @function cookie操作工具
  */
 
-namespace core\src\util;
+namespace core\src\utils;
 
 
 class CookieUtils

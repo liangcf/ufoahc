@@ -27,10 +27,9 @@ class View
         }else{
             $_url=$whole['wholes']['view_dir'];
         }
-        $layMode=$whole['wholes']['layout'];
         $tmpDir=__DIR__.'/../..';
         $content=$tmpDir.strtolower($_url).'.phtml';
-        $layUrl=$layMode.'.phtml';
+        $layUrl=$whole['wholes']['layout'].'.phtml';
         $layOutFile=$tmpDir.strtolower($layUrl);
         if(is_file($content)&&is_file($layOutFile)){
             $this->views($layOutFile,$content);

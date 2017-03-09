@@ -8,11 +8,11 @@ namespace core\run;
 
 class Application
 {
-    private $runConfig;
-    private $dev;
+    private static $runMode;
     private static $config;
     public static function init(){
         self::$config=GetConfigs::getRunConfigs();
+        self::$runMode=isset(self::$config['run_mode'])?self::$config['run_mode']:false;
         return new self();
     }
     /**
@@ -23,11 +23,11 @@ class Application
         $this->initHeader();
         $runTime=$_SERVER['REQUEST_TIME'];
 //        self::$config=GetConfigs::getRunConfigs();
-        $this->dev=isset(self::$config['mode'])?self::$config['mode']:false;
+//        self::$runMode=isset(self::$config['mode'])?self::$config['mode']:false;
         $this->handleException();
         $action=$this->route();
         $this->action($action);
-        if($this->dev===true){
+        if(self::$runMode===true){
             echo '<input type="hidden" value="'.(microtime(true)-$runTime).'">';
         }
     }
@@ -74,7 +74,6 @@ class Application
         $_module=$action['_module'];
         $_controller=$action['_controller'];
         $_action=$action['_action'];
-        $_url='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/'.$_action;
         /* 组装类路径 */
         $_className='app\\'.strtolower($_module).'\\src\\controller\\'.ucfirst($_controller).'Controller';
         $_funName=$_action.'Action';
@@ -87,8 +86,8 @@ class Application
         }
         $wholes['layout']='/app/'.$_module.'/view/layout/'.$data['layout'];
         /* 寻找视图文件的路径 */
-        $wholes['view_dir']=$_url;
-        $wholes['view_diy']='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/';;
+        $wholes['view_dir']='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/'.$_action;
+        $wholes['view_diy']='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/';
 
         $whole['before']=$data['before'];
         $whole['data']=$data['data'];
@@ -107,7 +106,7 @@ class Application
 
     //非开发环境全局处理error(warning)，exception,shutdown
     private function handleException(){
-        if($this->dev!==true){
+        if(self::$runMode!==true){
             error_reporting(E_ERROR | E_WARNING | E_PARSE);
             set_error_handler(array($this,'error_function'));
             set_exception_handler(array($this,'exception_function'));

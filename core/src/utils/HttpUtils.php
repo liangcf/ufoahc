@@ -1,7 +1,5 @@
 <?php
-
-namespace core\src\util;
-
+namespace core\src\utils;
 /**
  * HTTP相关的功能工具
  * @author Jason

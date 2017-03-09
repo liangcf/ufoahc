@@ -4,7 +4,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 邮件操作工具
  */
-namespace core\rds\util;
+namespace core\src\utils;
 
 require __DIR__ . '/../../var/class.phpmailer.php';
 require __DIR__ . '/../../var/class.smtp.php';

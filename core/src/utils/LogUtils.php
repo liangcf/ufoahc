@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 日志
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class LogUtils
 {

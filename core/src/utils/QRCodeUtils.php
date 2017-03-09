@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 二维码生成
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 include __DIR__.'/../../var/phpqrcode.php';
 

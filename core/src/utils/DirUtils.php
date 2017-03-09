@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 文件夹操作工具
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class DirUtils
 {

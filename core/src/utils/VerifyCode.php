@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 验证码
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class VerifyCode
 {

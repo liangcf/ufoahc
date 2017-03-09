@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function 获取用户ip
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class IpUtils
 {

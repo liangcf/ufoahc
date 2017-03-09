@@ -3,7 +3,7 @@
  * @author 梁朝富 lcf@jionx.com
  * @function base64_decode
  */
-namespace core\src\util;
+namespace core\src\utils;
 
 class ImgUtils
 {
