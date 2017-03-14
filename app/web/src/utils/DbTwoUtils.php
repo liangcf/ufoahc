@@ -5,12 +5,13 @@
  * Date: 2016/6/17
  * Time: 11:39
  */
-namespace app\admin\src\db;
+
+namespace app\web\src\utils;
 
 use core\run\GetConfigs;
 use core\src\db\Mysqli;
 
-abstract class DbConnect extends Mysqli
+abstract class DbTwoUtils extends Mysqli
 {
     /**
      * DbConnect constructor.
@@ -20,6 +21,6 @@ abstract class DbConnect extends Mysqli
     function __construct($tableName,$id='id'){
         $this->tableName=$tableName;
         $this->tableId=$id;
-        parent::initConnect(GetConfigs::getRunConfigs()['db']);
+        $this->initConnect(GetConfigs::getRunConfigs()['db_2']);
     }
 }

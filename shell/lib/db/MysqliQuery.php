@@ -21,7 +21,7 @@ class MysqliQuery
     private function __construct($config=array()){
         if(empty($config)){
             $defaultDb= require __DIR__ . '/../config/config.php';
-            $config=$defaultDb['default_db'];
+            $config=$defaultDb['db'];
         }
         $conn=new \mysqli($config['db_host'],$config['db_user'],$config['db_pwd'],$config['db_name'],$config['port']);
         if($conn->connect_errno){

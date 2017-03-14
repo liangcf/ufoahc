@@ -6,12 +6,12 @@
  * Time: 11:39
  */
 
-namespace app\example\src\db;
+namespace app\mobile\src\utils;
 
 use core\run\GetConfigs;
 use core\src\db\Mysqli;
 
-abstract class TwoConnect extends Mysqli
+abstract class DbTwoUtils extends Mysqli
 {
     /**
      * DbConnect constructor.

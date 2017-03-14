@@ -2,7 +2,7 @@
 namespace app\mobile\src\controller;
 
 use core\src\control\Controller;
-use core\src\util\LogUtils;
+use core\src\utils\LogUtils;
 
 class IndexController extends Controller
 {

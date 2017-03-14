@@ -203,7 +203,10 @@ abstract class Controller
 		ErrorHandle::errorPage($errorInfo,$errorMsg);
 	}
 
-    public function dbDao($className){
-        return Factory::getDaoObj($className,$this->module);
+    public function dbDao($className,$module=null){
+		if(empty($module)){
+			$module=$this->module;
+		}
+        return Factory::getDaoObj($className,$module);
     }
 }

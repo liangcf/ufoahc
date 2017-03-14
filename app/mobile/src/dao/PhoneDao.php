@@ -1,9 +1,9 @@
 <?php
 namespace app\mobile\src\dao;
 
-use app\mobile\src\db\DbConnect;
+use app\mobile\src\utils\DbUtils;
 
-class PhoneDao extends DbConnect
+class PhoneDao extends DbUtils
 {
     /**
      * 继承父类构造函数，第一个参数为表名，第二个参数为默认主键id，用于id查询

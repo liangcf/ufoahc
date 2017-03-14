@@ -1,9 +1,9 @@
 <?php
 namespace app\admin\src\dao;
 
-use app\admin\src\db\DbConnect;
+use app\admin\src\utils\DbUtils;
 
-class UsersDao extends DbConnect
+class UsersDao extends DbUtils
 {
     /**
      * 继承父类构造函数，第一个参数为表名，第二个参数为默认主键id，用于id查询

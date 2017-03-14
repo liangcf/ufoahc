@@ -7,7 +7,12 @@ include './../bin/init_list.php';
 try{
     $mysqli=\shell\lib\db\MysqliStmt::getInstance();
     $ret=$mysqli->selects('users',array('sex'=>0),array('sort_order'=>'desc'),5,12);
-    p($ret);
+    $res=array();
+    foreach($ret as $row){
+        $row['time_s']=$row['id'];
+        $res[]=$row;
+    }
+    p($res);
 }catch (Exception $e){
     echo '异常';
     echo $e->getMessage();

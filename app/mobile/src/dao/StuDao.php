@@ -7,9 +7,9 @@
  */
 namespace app\mobile\src\dao;
 
-use app\mobile\src\db\TwoConnect;
+use app\mobile\src\utils\DbTwoUtils;
 
-class StuDao extends TwoConnect
+class StuDao extends DbTwoUtils
 {
     /**
      * 继承父类构造函数，第一个参数为表名，第二个参数为默认主键id，用于id查询

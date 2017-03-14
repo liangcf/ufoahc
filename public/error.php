@@ -12,7 +12,7 @@
 if (is_file('./'.parse_url(@$_SERVER['REQUEST_URI'], PHP_URL_PATH))||stristr('cli',php_sapi_name())) {
     return false;
 }
-include '../init.php';
+include '../bin/init_list.php';
 $num=isset($_GET['num'])?$_GET['num']:'';
 if($num==404){
     \core\run\ErrorHandle::error404();
