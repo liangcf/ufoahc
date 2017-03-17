@@ -23,14 +23,12 @@ class View
         $transfer['after']=$whole['whole']['after'];
         $this->overall=$transfer;
         if($whole['whole']['data']['view']!==null){
-            $_url=$whole['wholes']['view_diy'].$whole['whole']['data']['view'];
+            $_url=$whole['wholes']['view_diy'].strtolower($whole['whole']['data']['view']);
         }else{
             $_url=$whole['wholes']['view_dir'];
         }
-        $tmpDir=__DIR__.'/../..';
-        $content=$tmpDir.strtolower($_url).'.phtml';
-        $layUrl=$whole['wholes']['layout'].'.phtml';
-        $layOutFile=$tmpDir.strtolower($layUrl);
+        $content=$_url.'.phtml';
+        $layOutFile=$whole['wholes']['layout'].'.phtml';
         if(is_file($content)&&is_file($layOutFile)){
             $this->views($layOutFile,$content);
         }else{

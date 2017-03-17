@@ -3,17 +3,15 @@ include './../bin/init_list.php';
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**********开始之处*****************************************************************************************************************************/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function uuid($prefix=null)
+{
+    return strtolower(md5(uniqid($prefix.md5(mt_rand()),true)));
+}
 
-try{
-    $mysqli=\shell\lib\db\MysqliStmt::getInstance();
-    $ret=$mysqli->selects('users',array('sex'=>0),array('sort_order'=>'desc'),5,12);
-    $res=array();
-    foreach($ret as $row){
-        $row['time_s']=$row['id'];
-        $res[]=$row;
-    }
-    p($res);
-}catch (Exception $e){
-    echo '异常';
-    echo $e->getMessage();
+function md5_uuid($key,$prefix=null)
+{
+    return strtolower(md5(hash_hmac("sha256",md5(uniqid($prefix.md5(mt_rand()),true)),$key)));
+}
+for($i=0;$i<20;$i++){
+    p(md5_uuid('t'));
 }

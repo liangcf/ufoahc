@@ -4,9 +4,11 @@ namespace app\web\src\controller;
 use core\src\control\Controller;
 use core\src\utils\LogUtils;
 use core\src\utils\QRCodeUtils;
+use core\src\utils\VerifyCode;
 
 class IndexController extends Controller
 {
+
     public function indexAction(){
 //        $this->errorPage('网络错误！请重试','网络错误');
         try{
@@ -22,6 +24,10 @@ class IndexController extends Controller
 //            $qrCode=null;
             /*获取配置文件方法*/
             $res1=$this->getConfigValue('my_array');
+            /* @var $indexService \app\web\src\service\IndexService*/
+            $indexService=parent::serviceObject('IndexService');
+            $indexRet=$indexService->index();
+//            p($indexRet);
 //            p($res1);die;
             $userDao=parent::dbDao('UsersDao');
             /*根据id查询数据*/
@@ -41,7 +47,8 @@ class IndexController extends Controller
              */
 
             /*测试日志工具*/
-//            LogUtils::log('liangchaofu','这是测试的内容','错误的内容--'.time());
+//            LogUtils::log('test','这是正常的测试','错误的内容--'.time());
+//            LogUtils::log('kkk','这是正常的测试','错误的内容--'.time());
             /*模糊查询方法*/
             $ret3=$userDao->like('name','郁',array(),array('sort_order'=>'desc'),1,2,array('name','content','sort_order'));
             /*邮件发送测试*/
@@ -63,12 +70,15 @@ class IndexController extends Controller
             $userDao->avg('sort_order');
             $userDao->sum('sort_order');
             $dbRunTime='访问数据库的时间：'.(microtime(true) - $tTime);
-
-            return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime,'phone'=>$phone,'qr_code'=>$qrCode))->response();
+            return $this->result(array('date_test'=>date('Y-m-d H:i:s'),'my_result'=>$res2,'ret'=>$ret3,'db_time'=>$dbRunTime,'phone'=>$phone,'qr_code'=>$qrCode,'title'=>'uf-tt'))->response();
         }catch (\Exception $e){
             LogUtils::log('test','异常',$e->getMessage());
             echo '网络错误！重试！';
             exit();
         }
+    }
+    public function testAction(){
+        $this->api();
+        VerifyCode::yzmCode();
     }
 }

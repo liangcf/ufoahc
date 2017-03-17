@@ -6,7 +6,7 @@
 namespace core\src\db;
 
 
-interface MysqliInterface
+interface MysqliInter
 {
     public function insert($data);
 

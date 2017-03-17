@@ -9,6 +9,7 @@ namespace core\src\tool;
 class Factory
 {
     private static $daoObj=array();
+    private static $serviceObj=array();
 
     /**
      * @param $className
@@ -27,5 +28,24 @@ class Factory
             throw new \Exception($class.'-- is not found:Factory->getDaoObj',500);
         }
         return self::$daoObj[$class];
+    }
+
+    /**
+     * @param $className
+     * @param $module
+     * @return object
+     * @throws \Exception
+     */
+    public static function getServiceObj($className,$module){
+        $class='app\\'.$module.'\\src\\service\\'.ucwords($className);
+        if(isset(self::$serviceObj[$class])){
+            return self::$serviceObj[$class];
+        }
+        try{
+            self::$serviceObj[$class]=new $class($module);
+        }catch (\Exception $e){
+            throw new \Exception($class.'-- is not found:Factory->serviceObj',500);
+        }
+        return self::$serviceObj[$class];
     }
 }

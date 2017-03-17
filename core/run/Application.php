@@ -10,9 +10,11 @@ class Application
 {
     private static $runMode;
     private static $config;
+    private static $baseRoot;
     public static function init(){
         self::$config=GetConfigs::getRunConfigs();
         self::$runMode=isset(self::$config['run_mode'])?self::$config['run_mode']:false;
+        self::$baseRoot=__DIR__.'/../..';
         return new self();
     }
     /**
@@ -71,23 +73,23 @@ class Application
     }
     /*实例化控制器返回数据*/
     private function actioning($action){
-        $_module=$action['_module'];
-        $_controller=$action['_controller'];
-        $_action=$action['_action'];
+        $_module=strtolower($action['_module']);
+        $_controller=strtolower($action['_controller']);
+        $_action=strtolower($action['_action']);
         /* 组装类路径 */
-        $_className='app\\'.strtolower($_module).'\\src\\controller\\'.ucfirst($_controller).'Controller';
+        $_className='app\\'.$_module.'\\src\\controller\\'.ucfirst($_controller).'Controller';
         $_funName=$_action.'Action';
         if(!class_exists($_className)){
             throw new \Exception("Controller in not found",404);
         }
-        $data=MainRun::runMethod($_className,$_funName,strtolower($_module));
+        $data=MainRun::runMethod($_className,$_funName,$_module);
         if(empty($data)){
             throw new \Exception("not return data",404);
         }
-        $wholes['layout']='/app/'.$_module.'/view/layout/'.$data['layout'];
+        $wholes['layout']=self::$baseRoot.'/app/'.$_module.'/view/layout/'.strtolower($data['layout']);
         /* 寻找视图文件的路径 */
-        $wholes['view_dir']='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/'.$_action;
-        $wholes['view_diy']='/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/';
+        $wholes['view_dir']=self::$baseRoot.'/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/'.$_action;
+        $wholes['view_diy']=self::$baseRoot.'/app/'.$_module.'/view/'.$_module.'/'.$_controller.'/';
 
         $whole['before']=$data['before'];
         $whole['data']=$data['data'];
@@ -143,20 +145,15 @@ class Application
         exit;
     }
 
-    private static function log($file,$message,$context,$dir=null){
-        if($dir){
-            $dirs=rtrim($dir,'/');
-        }else{
-            $dirs=__DIR__.'/../../data/logs';
-        }
-        $dir=$dirs.'/error_exception/';
+    private static function log($file,$message,$context){
+        $dir=self::$baseRoot.'/data/logs/error_exception/';
         if(!is_dir($dir)){
             mkdir($dir,0777,true);
         }
         if(!is_string($context)){
             $context=json_encode($context);
         }
-        $fileName=$dir.date('Ymd').$file.'.log';
+        $fileName=$dir.$file.'_'.date('Y-m-d').'.log';
         $date=date('Y-m-d H:i:s');
         $log='['.$date.'] - '.$message.' - '.$context."\r\n\r\n";
         return file_put_contents($fileName, $log,FILE_APPEND);

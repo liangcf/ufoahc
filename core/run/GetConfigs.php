@@ -9,6 +9,7 @@ class GetConfigs
 {
     private static $runConfig=array();
     private static $appConfig=array();
+    private static $_root=null;
     /**
      * 读取配置文件
      * @return mixed
@@ -17,7 +18,10 @@ class GetConfigs
         if(isset(self::$appConfig['application.data'])){
             return self::$appConfig['application.data'];
         }
-        $data=require __DIR__.'/../../config/application.config.php';
+        if(empty(self::$_root)){
+            self::$_root=__DIR__.'/../..';
+        }
+        $data=require self::$_root.'/config/application.config.php';
         self::$appConfig['application.data']=$data;
         return self::$appConfig['application.data'];
     }
@@ -31,7 +35,10 @@ class GetConfigs
         if(isset(self::$runConfig['run.data'])){
             return self::$runConfig['run.data'];
         }
-        $runFile=__DIR__.'/../../config/run.config.php';
+        if(empty(self::$_root)){
+            self::$_root=__DIR__.'/../..';
+        }
+        $runFile=self::$_root.'/config/run.config.php';
         if(is_file($runFile)){
             $data=require $runFile;
             self::$runConfig['run.data']=$data;
@@ -40,5 +47,4 @@ class GetConfigs
         ErrorHandle::errorConfig();
         exit;
     }
-
 }

@@ -15,6 +15,7 @@ class MainRun{
                 self::$objects[$className]=new $className();
             }
             self::$objects[$className]->initModule($module);
+//            self::$objects[$className]->initPath($root);
             $whole['before']=self::$objects[$className]->beforeRequest();
             if(!method_exists(self::$objects[$className],$method)){
                 throw new \Exception($method.'-- is not found',500);
@@ -24,7 +25,7 @@ class MainRun{
             $whole['layout']=self::$objects[$className]->_getLayOut();
             return $whole;
         } catch (\Exception $e) {
-            throw new \Exception($className.'-- is not found',500);
+            throw new \Exception($className.'-- is not found in MainRun:runMethod',500);
         }
     }
 }

@@ -15,6 +15,7 @@ abstract class Controller
 
 	public $_layOut='layout';
 	public $module='web';
+//	public $_root=null;
 
 	/**
 	 * 获取application.config.php配置文件中的配置项
@@ -141,12 +142,8 @@ abstract class Controller
 	 * @return string
 	 */
 	protected function passwordProcessing($pwd){
-		$pwdMd5=md5($pwd);
-		$pwdMd5=md5(substr($pwdMd5,0,-3));
-		$pwdMd5=md5(substr($pwdMd5,3));
-		return md5($pwdMd5);
+		return strtolower(md5(md5(substr(md5(substr(md5($pwd),0,-3)),3))));
 	}
-
 	/**
 	 * 获取当前时间
 	 * @return bool|string
@@ -154,44 +151,12 @@ abstract class Controller
 	protected function getTime(){
 		return date('Y-m-d H:i:s');
 	}
-
-	/**
-	 * 获取id
-	 * @return string
-	 */
-	protected function uuid(){
-		return strtolower(md5(uniqid(null . mt_rand(), true)));
-	}
-
-	public function initModule($module){
-		$this->module=$module;
-	}
-	/**
-	 * 调用请求的Action前需要执行的动作
-	 */
-	public function beforeRequest(){
-	}
-
-	/**
-	 * 调用请求的Action后需要执行的动作
-	 */
-	public function afterRequest(){
-	}
-
-	/**
-	 * 利用对象的方式给layout设置页面 set
-	 * @param string $_layMode
-	 */
-	public function _setLayOut($_layMode='layout'){
-		$this->_layOut=$_layMode;
-	}
-
-	/**
-	 * get获取layout
-	 * @return string
-	 */
-	public function _getLayOut(){
-		return $this->_layOut;
+    /**
+     * @param null $prefix
+     * @return string
+     */
+	protected function uuid($prefix=null){
+		return strtolower(md5(uniqid($prefix.md5(mt_rand()),true)));
 	}
 
 	/*抛出错误异常信息*/
@@ -203,10 +168,53 @@ abstract class Controller
 		ErrorHandle::errorPage($errorInfo,$errorMsg);
 	}
 
-    public function dbDao($className,$module=null){
+    protected function dbDao($className,$module=null){
 		if(empty($module)){
 			$module=$this->module;
 		}
         return Factory::getDaoObj($className,$module);
     }
+    protected function serviceObject($className,$module=null){
+        if(empty($module)){
+            $module=$this->module;
+        }
+        return Factory::getServiceObj($className,$module);
+    }
+
+    /**
+     * 获取根目录
+     * @return null
+     */
+//    protected function basePath(){
+//        return $this->_root;
+//    }
+    /**
+     * 利用对象的方式给layout设置页面 set
+     * @param string $_layMode
+     */
+    protected function _setLayOut($_layMode='layout'){
+        $this->_layOut=$_layMode;
+    }
+    /****************************************************************************************************************/
+    /**
+     * 调用请求的Action前需要执行的动作
+     */
+    public function beforeRequest(){
+    }
+
+    /**
+     * 调用请求的Action后需要执行的动作
+     */
+    public function afterRequest(){
+    }
+    public function _getLayOut(){
+        return $this->_layOut;
+    }
+    public function initModule($module){
+        $this->module=$module;
+    }
+//    public function initPath($root){
+//        $this->_root=$root;
+//    }
+    /****************************************************************************************************************/
 }
