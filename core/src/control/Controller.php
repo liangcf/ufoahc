@@ -163,9 +163,13 @@ abstract class Controller
 	protected function errorInfo($info){
 		throw new \Exception($info,404);
 	}
-	/*跳到错误页面*/
+	/*报错页面，含带错误提示*/
 	protected function errorPage($errorInfo,$errorMsg=null){
 		ErrorHandle::errorPage($errorInfo,$errorMsg);
+	}
+	/*重定向到错误页面*/
+	protected function redirectError(){
+		ErrorHandle::redirect();
 	}
 
     protected function dbDao($className,$module=null){

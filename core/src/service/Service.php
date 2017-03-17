@@ -17,11 +17,14 @@ abstract class Service
 
     /**
      * @param $dao
-     * @param $module
+     * @param null $module
      * @return \core\src\db\Mysqli
      * @throws \Exception
      */
-    protected function dbDao($dao,$module){
+    protected function dbDao($dao,$module=null){
+        if(empty($module)){
+            $module=$this->mode;
+        }
         return Factory::getDaoObj($dao,$module);
     }
 }

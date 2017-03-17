@@ -7,6 +7,6 @@
 if (is_file('./'.parse_url(@$_SERVER['REQUEST_URI'], PHP_URL_PATH))||stristr('cli',php_sapi_name())) {
     return false;
 }
-include '../bin/init_list.php';
+include '../initial/init_list.php';
 //执行开始
 \core\run\Application::init()->run();

@@ -11,8 +11,8 @@ namespace core\run;
 
 class ErrorHandle
 {
-    public static function redirect($num){
-        header('location:/error.php?num='.$num);
+    public static function redirect(){
+        header('location:/error.html');
         exit();
     }
     public static function errorPage($errorInfo,$errorMsg){
